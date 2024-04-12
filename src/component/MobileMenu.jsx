@@ -68,45 +68,13 @@ function MobileMenu() {
           </svg>
         )}
       </span>
-      <div className={`mobile-menu ${opened ? 'opened' : ''}`}>
-          
-          <Link href="/purpose">Purposes</Link>
-          <Link href="/services">Services</Link>
-          <div className="services-menu">
-          <Link href="/community-building">
-                <img src="/images/services/comunity-building.svg" />
-                <span>
-                  Community <br />
-                  Building
-                </span>
-              </Link>
-              <Link href="/search-visibility-and-traffic">
-                <img src="/images/services/search-visibility.svg" />
-                <span>
-                  Search Visibility <br />
-                  and Traffic
-                </span>
-              </Link>
-              <Link href="/reputation-experience-and-expertise">
-                <img src="/images/services/reputation.svg" />
-                <span>
-                  Reputation, Experience <br />
-                  and Expertise
-                </span>
-              </Link>
-              <Link href="/branding-solutions">
-                <img src="/images/services/branding.svg" />
-                <span>
-                  Branding <br />
-                  Solutions
-                </span>
-              </Link>
-          </div>
-          <Link href="#">Resources</Link>
-          <Link href="#">Team</Link>
-          <Link href="#">Get Started</Link>
-          <Link href="#">Contact Us</Link>
-        </div>
+      <div className={`mobile-menu ${opened ? "opened" : ""}`}>
+        <Link href="/purpose">Purposes</Link>
+        <Link href="#">Resources</Link>
+        <Link href="#">Pricing</Link>
+        <Link href="#">Get Started</Link>
+        <Link href="#">Quick Contact</Link>
+      </div>
     </>
   );
 }

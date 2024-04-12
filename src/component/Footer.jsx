@@ -12,12 +12,10 @@ function Footer() {
           </Link>
           <nav>
             <Link href="/purpose">Purposes</Link>
-            <Link href="/services">Services</Link>
             <Link href="#">Resources</Link>
-
-            <Link href="#">Team</Link>
+            <Link href="#">Pricing</Link>
             <Link href="#">Get Started</Link>
-            <Link href="#">Contact Us</Link>
+            <Link href="#">Quick Contact</Link>
           </nav>
           <div className="footer-contacts">
             <Link href="#">
@@ -108,13 +106,13 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-            <nav>
-                <Link href="#">Terms and Conditions</Link>
-                <Link href="#">Privacy Policy</Link>
-                <Link href="#">Cookie Policy</Link>
-                <Link href="#">Refund Policy</Link>
-            </nav>
-            <p>All Rights Reserved © Marketera HK</p>
+          <nav>
+            <Link href="#">Terms and Conditions</Link>
+            <Link href="#">Privacy Policy</Link>
+            <Link href="#">Cookie Policy</Link>
+            <Link href="#">Refund Policy</Link>
+          </nav>
+          <p>All Rights Reserved © Marketera HK</p>
         </div>
       </div>
     </footer>
