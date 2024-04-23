@@ -43,6 +43,10 @@
             border-radius: 0 0 24px 24px;
             overflow: hidden;
         }
+        @media (max-width:1400px) and (min-width:1000px){
+            width: 500px;
+            right: 30px;
+        }
         @media (max-width:992px) and (min-width:767px){
             height: auto;
             width: 55%;
@@ -148,6 +152,10 @@
             font-size: 36px;
             margin: 0 0 25px 0;
         }
+        @media (max-width:1400px) and (min-width:1000px){
+            font-size: 64px;
+            margin: 0 0 25px 0;
+        }
     }
     p{
         color: var(--1, #F0F0F7);
@@ -160,6 +168,12 @@
             text-align: center;
             font-size: 16px;
             margin: 0 0 64px 0;
+            br{
+                display: none;
+            }
+        }
+        @media (max-width:1400px) and (min-width:1000px){
+            width: 60%;
             br{
                 display: none;
             }
@@ -209,6 +223,10 @@
         @media (max-width:992px){
             display: none;
         }
+        @media (max-width:1400px) and (min-width:1000px){
+            left: 0;
+            width: 100%;
+        }
         &.is-fixed{
             position: fixed;
             top: 0; 
@@ -250,6 +268,9 @@
                 width: 100%;
                 gap:30px;
             }
+            @media (max-width:1400px) and (min-width:1000px){
+                width: calc(100% - 600px);
+            }
             span{
                 font-size: 64px;
                 font-weight: 700;
@@ -270,6 +291,9 @@
                 @media (max-width:992px){
                     font-size: 36px;
                 }
+                @media (max-width:1400px) and (min-width:1000px){
+                    font-size: 48px;
+                }
             }
         }
         .right{
@@ -280,6 +304,9 @@
             @media (max-width:992px){
                 width: 100%;
                 padding: 24px;
+            }
+            @media (max-width:1400px) and (min-width:1000px){
+                width: 600px;
             }
             span{
                 color: var(--4, #97D80F);
@@ -369,7 +396,7 @@
             bottom: 0;
             display: flex;
             @media (max-width:1375px){
-                width: 50%;
+                width: 40%;
                 img{
                     width: 100%;
                     height: auto;

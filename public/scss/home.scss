@@ -34,6 +34,10 @@
       overflow: hidden;
       border-radius: 0 0 24px 24px;
     }
+    @media (max-width:1400px) and (min-width:1000px){
+      width: 500px;
+      right: 30px;
+    }
     @media (max-width: 992px) and (min-width: 767px) {
       height: auto;
       width: 50%;
@@ -69,6 +73,12 @@
         }
         @media (max-width: 992px) and (min-width: 767px) {
           bottom: 45%;
+        }
+        @media (max-width:1400px) and (min-width:1000px){
+          bottom: 22%;
+          img{
+              max-width: 80%;
+          }
         }
       }
     }
@@ -183,6 +193,10 @@
       font-size: 36px;
       margin: 0 0 25px 0;
     }
+    @media (max-width:1400px) and (min-width:1000px){
+      font-size: 64px;
+      margin: 0 0 25px 0;
+    } 
   }
   p {
     color: var(--1, #f0f0f7);
@@ -551,6 +565,9 @@
           width: 100%;
           height: auto;
         }
+      }
+      @media (max-width:1400px) and (min-width:1000px){
+        width: 38%;
       }
       @media (max-width: 992px) {
         width: 100%;

@@ -24,7 +24,7 @@ const Preloader = () => {
     <div
       style={{
         position: "fixed",
-        color:"#ffffff",
+        color: "#ffffff",
         top: 0,
         left: 0,
         width: "100%",
@@ -36,10 +36,12 @@ const Preloader = () => {
         zIndex: 99999,
         opacity: isLoading ? 1 : 0,
         transition: "opacity 0.5s ease", // Smoothly transition the opacity
-        visibility: isVisible ? 'visible' : 'hidden',
+        visibility: isVisible ? "visible" : "hidden",
       }}
     >
-      <span>Loading...</span>
+      <span>
+        <img width={100} src="/images/enlight-preloader.gif" />
+      </span>
     </div>
   );
 };
