@@ -8,7 +8,7 @@ function HomeThird() {
   const blockRef = useRef(null);
   const [blockClass, setblockClass] = useState("");
 
-  useEffect(() => {
+  /*useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current && blockRef.current) {
         const sectionRect = sectionRef.current.getBoundingClientRect();
@@ -32,7 +32,7 @@ function HomeThird() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, []);*/
 
   return (
     <section className="home-third" ref={sectionRef}>
