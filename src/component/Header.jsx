@@ -18,7 +18,7 @@ function Header() {
           </Link>
           <nav>
             <Link href="/purpose">Purposes</Link>
-            <Link href="#">Resources</Link>
+            <Link href="/resources">Resources</Link>
             <Link href="#">Pricing</Link>
             <Link href="#">Get Started</Link>
             <Link href="#">Quick Contact</Link>
