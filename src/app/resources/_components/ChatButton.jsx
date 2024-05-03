@@ -11,7 +11,7 @@ function ChatButton() {
 
   return (
     <>
-      <button onClick={() => handlePopup()} className="main-button">
+      <a href="#" className="main-button">
         <span>
         Get started with Enlight
           <svg
@@ -27,7 +27,7 @@ function ChatButton() {
             />
           </svg>
         </span>
-      </button>
+      </a>
       {popupOpened && <FormPopup popupTitle="Let's Chat with Enlight Experts" closePopup={() => handlePopup()} />}
     </>
   );
