@@ -17,7 +17,6 @@ function GetStartedLast() {
             {!formSent ? (
               <GetForm
                 handleFormReset={() => handleFormReset()}
-                popupTitleContent="Get started now!"
                 subtitle="Send us a request explaining your marketing needs so we can select a perfect solution for you!"
               />
             ) : (

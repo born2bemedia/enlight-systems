@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
+import Link from "next/link";
 
 const ValidationSchema = Yup.object().shape({
   name: Yup.string().required("This field is required."),
@@ -67,6 +68,7 @@ const GetForm = ({ handleFormReset, popupTitleContent = "", subtitle }) => (
   <div>
     <Formik
       initialValues={{
+        solution: popupTitleContent,
         name: "",
         email: "",
         phone: "",
@@ -95,13 +97,14 @@ const GetForm = ({ handleFormReset, popupTitleContent = "", subtitle }) => (
             <h2>{popupTitleContent}</h2>
           ) : (
             <h2>
-              Crypto needs a different <br />
-              marketing. <span>Get it!</span>
+              Get started now!
             </h2>
           )}
-          {subtitle ? (<p className="subtitle">{subtitle}</p>) : ''};
+          {subtitle ? <p className="subtitle">{subtitle}</p> : ""}
+
 
           <Form className="popup-form">
+            <Field type="hidden" name="solution" />
             <div className="input-wrap">
               <Field
                 name="name"
@@ -197,6 +200,11 @@ const GetForm = ({ handleFormReset, popupTitleContent = "", subtitle }) => (
                 </span>
               </span>
             </button>
+            <p className="terms">
+              By proceeding, you agree to the{" "}
+              <Link href="#">Terms of Service</Link> and{" "}
+              <Link href="#">Privacy Policy</Link>.
+            </p>
           </Form>
         </>
       )}

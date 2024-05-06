@@ -3,7 +3,7 @@ import React from "react";
 import GetForm from "./GetForm";
 import { useState } from "react";
 
-export default function FormPopup({ closePopup }) {
+export default function FormPopup({ closePopup, solutionTitle }) {
   const [formSent, setFormSent] = useState(false);
 
   const handleFormReset = () => {
@@ -31,7 +31,7 @@ export default function FormPopup({ closePopup }) {
           />
         </svg>
         {!formSent ? (
-          <GetForm handleFormReset = { () => handleFormReset() }/>
+          <GetForm popupTitleContent={solutionTitle} handleFormReset = { () => handleFormReset() }/>
         ) : (
           <div className="form-sent">
             <svg

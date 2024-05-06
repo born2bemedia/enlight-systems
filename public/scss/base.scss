@@ -267,6 +267,12 @@ a{
             gap:32px;
             flex-wrap: wrap;
             width: 100%;
+            margin-top: 40px;
+            .terms{
+                text-align: center;
+                font-size: 16px;
+                width: 100%;
+            }
             >div{
                 width: calc(50% - 16px);
                 position: relative;
