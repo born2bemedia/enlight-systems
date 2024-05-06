@@ -1,8 +1,8 @@
 ---
 title: "Crypto Marketing Metrics: Key Performance Indicators for Success"
 image: "article2.png"
-seo_title: ""
-seo_description: ""
+seo_title: "Key KPI in Crypto Marketing"
+seo_description: "Learn how to measure the effectiveness of crypto marketing effectively. Enlight explores the main KPIs and explains their dependencies."
 
 ---
 

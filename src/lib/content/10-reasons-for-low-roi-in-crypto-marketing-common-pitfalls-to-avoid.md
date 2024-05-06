@@ -1,8 +1,8 @@
 ---
 title: "10 Reasons for Low ROI in Crypto Marketing: Common Pitfalls to Avoid"
 image: "article1.png"
-seo_title: ""
-seo_description: ""
+seo_title: "10 Reasons for Low ROI in Crypto Marketing"
+seo_description: "Learn why you face low ROI in marketing your crypto project. Enlight explains how to boost crypto marketing efficiency with brand solutions."
 ---
 
 Achieving a high return on investment in crypto marketing is essential for the success of your project. However, many crypto marketing campaigns fail to deliver the expected ROI due to common pitfalls. In this article, we'll explore the top 10 reasons why crypto marketing campaigns often result in low ROI and provide insights on how to avoid these pitfalls.

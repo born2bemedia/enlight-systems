@@ -7,8 +7,21 @@ import Preloader from "../component/Preloader";
 const epilogue = Epilogue({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Enlight Systems",
-  description: "",
+  title: {
+    default: "Complex Crypto Marketing Platform | Enlight Systems",
+    template: "%s | Enlight Systems",
+  },
+  description:
+    "Enlight offers a single dashboard for all your crypto marketing needs. Manage and track campaign performance, budgets, customers, and compliance.",
+  openGraph: {
+    title: {
+      default: "Complex Crypto Marketing Platform | Enlight Systems",
+      template: "%s | Enlight Systems",
+    },
+    description:
+      "Enlight offers a single dashboard for all your crypto marketing needs. Manage and track campaign performance, budgets, customers, and compliance.",
+    images: "https://enlight.systems/images/meta.png",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-/*export async function generateMetadata({ params: { slug } }) {
+export async function generateMetadata({ params: { slug } }) {
   const post = await getPost(slug);
   return {
     title: post.seo_title,
@@ -18,10 +18,10 @@ export async function generateStaticParams() {
     openGraph: {
       title: post.seo_title,
       description: post.seo_description,
-      images: "https://vancantgroup.com/images/meta.png",
+      images: "https://enlight.systems/images/meta.png",
     },
   };
-}*/
+}
 
 async function SingleArticle({ params: { slug } }) {
   const post = await getPost(slug);

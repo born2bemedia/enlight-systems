@@ -1,8 +1,8 @@
 ---
 title: "Navigating Compliance in Crypto Marketing: A Practical Guide"
 image: "article3.png"
-seo_title: ""
-seo_description: ""
+seo_title: "Crypto Marketing Compliance Explained"
+seo_description: "Enlight explains what compliance is in marketing. Learn how to comply with laws and regulations in the crypto industry. Get practical recommendations!"
 
 ---
 

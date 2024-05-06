@@ -1,8 +1,8 @@
 ---
 title: "Crypto Product Differentiation: How to Stand Out from the Crowd"
 image: "article4.png"
-seo_title: ""
-seo_description: ""
+seo_title: " Crypto Project Differentiation"
+seo_description: "Learn how your crypto project or product may differentiate itself in the competitive landscape. Explore the opportunities the Enlight dashboard ensures when marketing your solutions."
 
 ---
 

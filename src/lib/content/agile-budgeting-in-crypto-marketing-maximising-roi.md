@@ -1,8 +1,8 @@
 ---
 title: "Agile Budgeting in Crypto Marketing: Maximising ROI"
 image: "article6.png"
-seo_title: ""
-seo_description: ""
+seo_title: "Agile Budgeting in Crypto Marketing"
+seo_description: "Learn what agile budgeting is and how it affects crypto marketing. The Enlight team provides valuable insights into effective budgeting for crypto marketing."
 
 ---
 
