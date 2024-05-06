@@ -109,9 +109,9 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <nav>
-            <Link href="#">Terms and Conditions</Link>
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Cookie Policy</Link>
+            <Link href="/terms-of-service">Terms and Conditions</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/cookie-policy">Cookie Policy</Link>
           </nav>
           <p>All Rights Reserved © Marketera HK</p>
         </div>
