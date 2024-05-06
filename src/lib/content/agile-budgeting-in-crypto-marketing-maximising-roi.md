@@ -20,7 +20,7 @@ In the highly competitive crypto market, marketing budgets must be optimised for
 *   Focus on ROI: With agile budgeting, the focus is on maximising ROI. Resources are allocated to activities that generate the highest returns, ensuring that marketing efforts are optimised for success.    
 *   Iterative Approach: Agile budgeting is based on an iterative process of planning, executing, and evaluating marketing activities. Budgets are adjusted based on performance data, allowing continuous improvement.
 
-<a href="#" class="main-button">
+<a href="/get-started" class="main-button">
     <span>
     Get started with Enlight
     </span>

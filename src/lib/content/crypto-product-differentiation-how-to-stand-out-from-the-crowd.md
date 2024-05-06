@@ -20,7 +20,7 @@ Product differentiation makes your crypto project unique and sets it apart from 
 *   **Feature Differentiation:** Introduce unique features or functionalities that address specific user needs or pain points. Identify gaps in the market and develop innovative solutions to fill them.
 *   **Value Differentiation:** Provide better value for money through competitive pricing, additional benefits, or unique selling propositions. Demonstrate why your product is worth investing in over competing alternatives.
 
-<a href="#" class="main-button">
+<a href="/get-started" class="main-button">
     <span>
     Get started with Enlight
     </span>

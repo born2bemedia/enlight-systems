@@ -11,7 +11,7 @@ function ChatButton() {
 
   return (
     <>
-      <a href="#" className="main-button">
+      <a href="/get-started" className="main-button">
         <span>
         Get started with Enlight
           <svg

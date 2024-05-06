@@ -19,7 +19,7 @@ Targeting the right audience can lead to wasted marketing efforts and resources.
 
 Low-quality content can damage your brand's reputation and fail to engage your audience effectively. Investing in high-quality, relevant content is essential for attracting and retaining customers.
 
-<a href="#" class="main-button">
+<a href="/get-started" class="main-button">
     <span>
     Get started with Enlight
     </span>

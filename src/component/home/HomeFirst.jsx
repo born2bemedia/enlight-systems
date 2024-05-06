@@ -48,7 +48,7 @@ function HomeFirst() {
             </p>
           </RevealWrapper>
           <RevealWrapper origin="bottom" delay={0}>
-            <Link href="#" className="main-button">
+            <Link href="/get-started" className="main-button">
               <span>
                 Get Started
                 <svg

@@ -20,7 +20,7 @@ Transparency is key to building trust with your audience in the crypto space. En
 
 Deceptive marketing practices can land you in hot water with regulators and damage your reputation. Avoid using false or misleading statements, fake endorsements, or deceptive advertising tactics. Be honest and transparent in your marketing communications, and avoid creating a false sense of urgency or fear of missing out (FOMO) among your audience.
 
-<a href="#" class="main-button">
+<a href="/get-started" class="main-button">
     <span>
     Get started with Enlight
     </span>

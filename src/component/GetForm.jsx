@@ -63,7 +63,7 @@ const handleSubmit = async (
   }
 };
 
-const GetForm = ({ handleFormReset, popupTitleContent = "" }) => (
+const GetForm = ({ handleFormReset, popupTitleContent = "", subtitle }) => (
   <div>
     <Formik
       initialValues={{
@@ -99,6 +99,7 @@ const GetForm = ({ handleFormReset, popupTitleContent = "" }) => (
               marketing. <span>Get it!</span>
             </h2>
           )}
+          {subtitle ? (<p className="subtitle">{subtitle}</p>) : ''};
 
           <Form className="popup-form">
             <div className="input-wrap">
@@ -167,7 +168,7 @@ const GetForm = ({ handleFormReset, popupTitleContent = "" }) => (
             <div className="input-wrap">
               <Field
                 name="currentChallenges"
-                placeholder="Current challenges"
+                placeholder="Current marketing challenges"
                 className={
                   touched.currentChallenges && errors.currentChallenges
                     ? "invalid"

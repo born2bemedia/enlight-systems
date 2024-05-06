@@ -20,7 +20,7 @@ The customer acquisition cost calculates the cost of acquiring a new customer th
 
 Determining your marketing campaigns' return on investment (ROI) is crucial for evaluating their effectiveness. ROI measures the profitability of your marketing efforts relative to the costs incurred. By analysing your ROI, you can identify which campaigns generate the highest returns and allocate your budget accordingly.
 
-<a href="#" class="main-button">
+<a href="/get-started" class="main-button">
     <span>
     Get started with Enlight
     </span>

@@ -210,7 +210,7 @@ function HomeLast() {
           </div>
         </RevealList>
         <RevealWrapper origin="bottom">
-            <Link href="#" className="main-button">
+            <Link href="/get-started" className="main-button">
               <span>
                 Get Started
                 <svg
