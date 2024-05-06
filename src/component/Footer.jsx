@@ -15,7 +15,9 @@ function Footer() {
             <Link href="/resources">Resources</Link>
             <Link href="/pricing">Pricing</Link>
             <Link href="/get-started">Get Started</Link>
+            <Link href="/about-us">About us</Link>
             <Link href="#">Quick Contact</Link>
+            <Link href="#">Contact Us</Link>
           </nav>
           <div className="footer-contacts">
             <Link href="#">
@@ -110,7 +112,6 @@ function Footer() {
             <Link href="#">Terms and Conditions</Link>
             <Link href="#">Privacy Policy</Link>
             <Link href="#">Cookie Policy</Link>
-            <Link href="#">Refund Policy</Link>
           </nav>
           <p>All Rights Reserved © Marketera HK</p>
         </div>
