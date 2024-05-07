@@ -98,6 +98,9 @@
       flex-direction: column;
       align-items: center;
       gap: 40px;
+      @media (max-width: 1400px) and (min-width: 993px) {
+        padding: 40px 16px;
+      }
       @media (max-width:992px){
         width: 100%;
         padding: 40px 24px;
@@ -170,6 +173,10 @@
         background: rgba(255, 255, 255, 0.1);
         padding: 0 40px;
         height: 56px;
+        @media (max-width: 1400px) and (min-width: 993px) {
+            gap: 16px;
+            padding: 0 20px;
+        }
       }
       .button {
         width: 100%;

@@ -31,7 +31,7 @@ function PurposeLast() {
             </RevealWrapper>
 
             <RevealWrapper origin="bottom" delay={0}>
-              <button onClick={() => handlePopup()} className="main-button">
+              <Link href="/get-started"  className="main-button">
                 <span>
                   Get Started
                   <svg
@@ -47,7 +47,7 @@ function PurposeLast() {
                     />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </RevealWrapper>
           </div>
         </div>
