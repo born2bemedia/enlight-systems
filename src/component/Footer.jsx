@@ -17,7 +17,7 @@ function Footer() {
             <Link href="/get-started">Get Started</Link>
             <Link href="/about-us">About us</Link>
             <Link href="/quick-contact">Quick Contact</Link>
-            <Link href="#">Contact Us</Link>
+            <Link href="/contact-us">Contact Us</Link>
           </nav>
           <div className="footer-contacts">
             <Link href="#">
