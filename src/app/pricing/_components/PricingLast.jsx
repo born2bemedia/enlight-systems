@@ -17,7 +17,7 @@ function PricingLast() {
               </h2>
             </RevealWrapper>
             <RevealWrapper origin="bottom" delay={0}>
-              <Link href="#" className="main-button">
+              <Link href="/quick-contact" className="main-button">
                 <span>
                   Contact Us
                   <svg
