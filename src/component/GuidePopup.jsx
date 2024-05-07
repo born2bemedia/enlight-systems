@@ -1,0 +1,57 @@
+"use client";
+import React from "react";
+import GetForm from "./GetForm";
+import { useState } from "react";
+import GuideForm from "./GuideForm";
+
+export default function GuidePopup({ closePopup, solutionTitle }) {
+  const [formSent, setFormSent] = useState(false);
+
+  const handleFormReset = () => {
+    setFormSent(!formSent);
+  }
+
+  return (
+    <div className="popup">
+      <div className="overlay" onClick={() => closePopup()}></div>
+      <div className="popup-inner guide-popup">
+        <svg
+          className="popup-close"
+          onClick={() => closePopup()}
+          width="20"
+          height="21"
+          viewBox="0 0 20 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 18.5L2 2.5M18 2.5L2 18.5"
+            stroke="#97D80F"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+        </svg>
+        {!formSent ? (
+          <GuideForm popupTitleContent={solutionTitle} handleFormReset = { () => handleFormReset() }/>
+        ) : (
+          <div className="form-sent">
+            <svg
+              width="54"
+              height="54"
+              viewBox="0 0 54 54"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M44.8055 36.7867L49.3815 23.0533C53.3815 11.0587 55.3815 5.06133 52.2135 1.896C49.0481 -1.26934 43.0508 0.727997 31.0535 4.728L17.3228 9.304C7.64279 12.5307 2.80279 14.1467 1.42946 16.512C0.787094 17.6175 0.44873 18.8734 0.44873 20.152C0.44873 21.4306 0.787094 22.6865 1.42946 23.792C2.80279 26.16 7.64279 27.7733 17.3228 31.0027C18.5228 31.4027 19.8748 31.1147 20.7735 30.2267L35.4561 15.68C35.6491 15.4704 35.8826 15.3021 36.1425 15.1854C36.4024 15.0686 36.6833 15.0058 36.9681 15.0007C37.253 14.9956 37.5359 15.0483 37.7998 15.1557C38.0638 15.263 38.3031 15.4228 38.5035 15.6254C38.7039 15.8279 38.8611 16.069 38.9656 16.3341C39.0702 16.5991 39.1199 16.8826 39.1117 17.1674C39.1035 17.4522 39.0377 17.7324 38.9181 17.991C38.7986 18.2496 38.6278 18.4813 38.4161 18.672L23.9735 32.9813C23.4917 33.4737 23.1559 34.09 23.0034 34.7618C22.8508 35.4336 22.8876 36.1345 23.1095 36.7867C26.3361 46.4667 27.9521 51.3093 30.3175 52.6853C31.4236 53.3274 32.6798 53.6656 33.9588 53.6656C35.2378 53.6656 36.494 53.3274 37.6001 52.6853C39.9655 51.3093 41.5761 46.4693 44.8055 36.7867Z"
+                fill="#97D80F"
+              />
+            </svg>
+            <h2>Your request has been <br/>successfully submitted.</h2>
+            <p>Our team will review it shortly. Thank you for choosing Enlight.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

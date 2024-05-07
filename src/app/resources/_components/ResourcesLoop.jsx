@@ -71,6 +71,7 @@ function ResourcesLoop() {
             title="Our Guide: Getting Started with the Enlight Systems"
             image="article5-loop.png"
             slug="#"
+            guide={true}
           />
           <ResourceCard className="half"
             title="Agile Budgeting in Crypto Marketing: Maximising ROI"
