@@ -27,7 +27,7 @@ function Header() {
           </nav>
 
           <div className="header-right">
-            <Link href="#" className="login">
+            <Link href="/login" className="login">
               Log In
             </Link>
 
