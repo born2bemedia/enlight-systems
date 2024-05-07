@@ -664,7 +664,8 @@
                 font-size: 48px;
                 font-style: normal;
                 font-weight: 500;
-                line-height: 120%; /* 57.6px */
+                line-height: 120%; 
+                text-align: left;
             }
             p{
                 color: var(--2, #0F0F0F);
