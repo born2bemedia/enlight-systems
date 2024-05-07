@@ -202,8 +202,8 @@ const GetForm = ({ handleFormReset, popupTitleContent = "", subtitle }) => (
             </button>
             <p className="terms">
               By proceeding, you agree to the{" "}
-              <Link href="#">Terms of Service</Link> and{" "}
-              <Link href="#">Privacy Policy</Link>.
+              <Link href="/terms-of-service">Terms of Service</Link> and{" "}
+              <Link href="/privacy-policy">Privacy Policy</Link>.
             </p>
           </Form>
         </>
