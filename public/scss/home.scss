@@ -369,6 +369,9 @@
     width: calc(100% - 588px);
     position: sticky;
     top:88px;
+    @media (max-width: 1400px) and (min-width: 993px) {
+      width: 45%;
+    }
     @media (max-width: 992px) {
       width: 100%;
       position: relative;
@@ -452,6 +455,9 @@
   }
   &__col-02 {
     width: 588px;
+    @media (max-width: 1400px) and (min-width: 993px) {
+      width: 55%;
+    }
     @media (max-width: 992px) {
       width: 100%;
     }
