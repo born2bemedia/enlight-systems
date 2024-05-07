@@ -96,7 +96,7 @@ a{
 	border-radius: 0px 0px 24px 0px;
 	background: var(--4, #97D80F);
 	display:flex;
-	padding:0 72px 0 24px;
+	padding:5px 72px 0 24px;
 	width:fit-content;
 	height: 56px;
 	position: relative; /* Needed for the absolute positioning of the pseudo-element */
@@ -396,10 +396,24 @@ a{
                         background: transparent;
                         border: none;
                         width: 70px;
+                        &.open{
+                            @media (min-width: 993px){
+                              .country-list{
+                                margin: 0;
+                                width: 434px;
+                                box-shadow: unset;
+                                background: #dcdce2;
+                                z-index: 2;
+                                
+                              }
+                            }
+                          }
                     }
                     .selected-flag{
                         background: transparent;
                         padding-left: 24px;
+                        padding-right: 24px;
+                        width: 100%;
                         .flag{
                             transform: scale(1.2);
                         }

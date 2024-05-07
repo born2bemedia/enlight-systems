@@ -104,7 +104,7 @@ const LoginForm = () => (
           </Form>
           <p>
             By proceeding, you agree to the{" "}
-            <Link href="/terms-of-service">Terms of Service</Link> and{" "}
+            <Link href="/terms-of-service">Terms of Service</Link> and<br/>
             <Link href="/privacy-policy">Privacy Policy</Link>.
           </p>
           <div className="forgot">

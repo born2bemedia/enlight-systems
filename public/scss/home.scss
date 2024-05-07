@@ -1,5 +1,5 @@
 .home-first {
-  padding: 100px 0 190px;
+  padding: 150px 0 150px;
   position: relative;
   overflow: hidden;
   @media (max-width: 992px) {
@@ -187,7 +187,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
-    margin: 0 0 50px 0;
+    margin: 0 0 30px 0;
     @media (max-width: 992px) {
       text-align: center;
       font-size: 36px;
@@ -707,7 +707,7 @@
         top: unset;
         right: 0;
         left: unset;
-        bottom: -86px;
+        bottom: -80px;
       }
     }
     .prev {
@@ -718,7 +718,7 @@
         top: unset;
         right: unset;
         left: 0;
-        bottom: -86px;
+        bottom: -80px;
       }
     }
 
@@ -761,7 +761,7 @@
           font-size: 24px;
           font-style: normal;
           font-weight: 500;
-          line-height: 1;
+          line-height: 1.2;
         }
         p {
           color: var(--2, #0f0f0f);
@@ -887,7 +887,7 @@
           top: unset;
           right: 0;
           left: unset;
-          bottom: -86px;
+          bottom: -80px;
         }
       }
       .prev {
@@ -898,7 +898,7 @@
           top: unset;
           right: unset;
           left: 0;
-          bottom: -86px;
+          bottom: -80px;
         }
       }
 
@@ -1135,7 +1135,7 @@
         top: unset;
         right: 0;
         left: unset;
-        bottom: -86px;
+        bottom: -80px;
       }
     }
     .prev {
@@ -1146,7 +1146,7 @@
         top: unset;
         right: unset;
         left: 0;
-        bottom: -86px;
+        bottom: -80px;
       }
     }
 

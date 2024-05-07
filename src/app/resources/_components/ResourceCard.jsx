@@ -6,10 +6,8 @@ function ResourceCard( {title, image, slug, className } ) {
   return (
     <div className={`resource-card ${className}`}>
             <div className="top">
-              <Image
+              <img
                 src={`/images/resources/${image}`}
-                width={375}
-                height={300}
               />
             </div>
             <div className="bottom">
