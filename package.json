@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^14.2.3",
     "axios": "^1.6.8",
     "formik": "^2.4.5",
     "fs": "^0.0.1-security",
