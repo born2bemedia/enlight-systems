@@ -82,9 +82,11 @@ function HomeThird() {
                   campaign tracking and report generation.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen1.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen1"
                 />
               </div>
               <div>
@@ -97,9 +99,11 @@ function HomeThird() {
                   client information.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen2.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen2"
                 />
               </div>
               <div>
@@ -111,9 +115,11 @@ function HomeThird() {
                   of inconsistent execution and resource-intensive setup.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen3.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen3"
                 />
               </div>
               <div>
@@ -125,9 +131,11 @@ function HomeThird() {
                   billing and financial non-compliance.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen4.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen4"
                 />
               </div>
               <div>
@@ -139,9 +147,11 @@ function HomeThird() {
                   non-specific targeting and fragmented audience insights.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen5.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen5"
                 />
               </div>
               <div>
@@ -153,9 +163,11 @@ function HomeThird() {
                   response to market changes.
                 </p>
                 <Image
-                  src={"/images/home/default2.png"}
-                  width={588}
-                  height={350}
+                  src={"/images/home/screen6.png"}
+                  width={1180}
+                  height={700}
+                  quality={100}
+                  alt="screen6"
                 />
               </div>
             </div>

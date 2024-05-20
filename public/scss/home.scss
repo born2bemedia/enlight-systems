@@ -464,6 +464,9 @@
     .column {
       display: flex;
       flex-direction: column;
+      img{
+        height: auto;
+      }
       > div {
         margin-bottom: 40px;
         padding-bottom: 40px;

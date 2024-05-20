@@ -56,9 +56,10 @@ function HomeSixth() {
                   </ul>
                 </div>
                 <Image
-                  src="/images/home/default.png"
-                  width={590}
-                  height={350}
+                  src="/images/home/core1.png"
+                  width={1180}
+                  height={700}
+                  alt="core1"
                 />
               </div>
             </div>
@@ -76,9 +77,10 @@ function HomeSixth() {
                   </ul>
                 </div>
                 <Image
-                  src="/images/home/default.png"
-                  width={590}
-                  height={350}
+                  src="/images/home/core2.png"
+                  width={1180}
+                  height={700}
+                  alt="core2"
                 />
               </div>
             </div>
@@ -96,9 +98,10 @@ function HomeSixth() {
                   </ul>
                 </div>
                 <Image
-                  src="/images/home/default.png"
-                  width={590}
-                  height={350}
+                  src="/images/home/core3.png"
+                  width={1180}
+                  height={700}
+                  alt="core3"
                 />
               </div>
             </div>
@@ -116,9 +119,10 @@ function HomeSixth() {
                   </ul>
                 </div>
                 <Image
-                  src="/images/home/default.png"
-                  width={590}
-                  height={350}
+                  src="/images/home/core4.png"
+                  width={1180}
+                  height={700}
+                  alt="core4"
                 />
               </div>
             </div>
