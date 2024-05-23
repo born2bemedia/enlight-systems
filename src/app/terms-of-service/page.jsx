@@ -27,9 +27,9 @@ function TermsPage() {
             <article>
               <p>
                 This is an agreement between you or the entity that you
-                represent (hereinafter "you" or "your") and Marketera HK
-                (hereinafter "Marketera HK") governing your use of the services
-                offered by Marketera HK.
+                represent (hereinafter "you" or "your") and Marketera Limited
+                (hereinafter "Marketera Limited") governing your use of the services
+                offered by Marketera Limited.
               </p>
               <h2>
                 <strong>Acceptance of the Agreement</strong>

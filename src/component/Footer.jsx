@@ -134,7 +134,7 @@ function Footer() {
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>
           </nav>
-          <p>All Rights Reserved © Marketera HK</p>
+          <p>All Rights Reserved © Marketera Limited</p>
         </div>
       </div>
     </footer>

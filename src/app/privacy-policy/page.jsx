@@ -27,7 +27,7 @@ function PrivacyPage() {
             <article>
               <p>
                 This Privacy Policy statement is presented by Enlight Systems
-                (Marketera HK), collectively referred to as "Enlight Systems,"
+                (Marketera Limited), collectively referred to as "Enlight Systems,"
                 "we," "us," or "our."
               </p>
               <h2>
