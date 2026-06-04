@@ -15,24 +15,20 @@ function QuickContactBlock() {
       <section className="contact-block">
         <div className="_container">
           <RevealWrapper origin="bottom" delay={0}>
-            <h1>
-              Have a question? <br />
-              Submit your request!
-            </h1>
+            <h1>Need help choosing the right setup?</h1>
           </RevealWrapper>
           <RevealWrapper origin="bottom" delay={0}>
             <h3>
-              Encounter any challenges while setting up your dashboard or
-              customising modules? Need assistance getting started <br />
-              or choosing the perfect dashboard for your needs? Use our Quick
-              Contact form to submit your question directly to <br />a dedicated
-              specialist. Skip the general queue and get quick, personalised
-              support. Please follow the steps below.
+              Not sure what you need yet? Tell us about your marketing setup and
+              we&apos;ll help you identify gaps and the right solution.
             </h3>
           </RevealWrapper>
           <div className="contact-block__body">
             {!formSent ? (
-              <ContactForm handleFormReset={() => handleFormReset()} />
+              <ContactForm
+                variant="quick"
+                handleFormReset={() => handleFormReset()}
+              />
             ) : (
               <div className="form-sent">
                 <svg

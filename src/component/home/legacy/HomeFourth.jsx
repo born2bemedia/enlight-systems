@@ -4,18 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function HomeFourth() {
+function HomeFourth({
+  ctaHref = "/get-started",
+  ctaLabel = "Get Started",
+  showImage = true,
+}) {
   return (
     <section className="home-fourth">
       <div className="_container">
         <div className="home-fourth__body">
-          <RevealWrapper origin="bottom" delay={0} className="image-wrap">
-            <Image
-              src={"/images/home/third-block-image.webp"}
-              width={592}
-              height={510}
-            />
-          </RevealWrapper>
+          {showImage && (
+            <RevealWrapper origin="bottom" delay={0} className="image-wrap">
+              <Image
+                src={"/images/home/third-block-image.webp"}
+                width={592}
+                height={510}
+                alt=""
+              />
+            </RevealWrapper>
+          )}
           <RevealWrapper origin="bottom" delay={0}>
             <h2>
             Simply manage <br/>everything, from tasks <br/>to marketing budgets.
@@ -26,9 +33,9 @@ function HomeFourth() {
           </RevealWrapper>
 
           <RevealWrapper origin="bottom" delay={0}>
-            <Link href="/get-started" className="main-button">
+            <Link href={ctaHref} className="main-button">
               <span>
-                Get Started
+                {ctaLabel}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

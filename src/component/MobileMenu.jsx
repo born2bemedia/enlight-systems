@@ -69,6 +69,7 @@ function MobileMenu() {
         )}
       </span>
       <div className={`mobile-menu ${opened ? "opened" : ""}`}>
+        <Link href="/our-platform">Our Platform</Link>
         <Link href="/purpose">Purposes</Link>
         <Link href="/resources">Resources</Link>
         <Link href="/pricing">Pricing</Link>

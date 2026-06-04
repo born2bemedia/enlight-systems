@@ -1,0 +1,222 @@
+.home-calculator-cta {
+  margin: 0 0 180px;
+
+  @media (max-width: 992px) {
+    margin: 0 0 80px;
+  }
+
+  &__panel {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 601px;
+    padding: 80px 40px;
+    border-radius: 0 24px 24px 24px;
+    background: #0f0f0f;
+    isolation: isolate;
+
+    @media (max-width: 992px) {
+      min-height: 0;
+      padding: 64px 24px 48px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        178.22deg,
+        rgb(51, 60, 239) 29.83%,
+        rgb(11, 152, 255) 63.47%,
+        rgb(156, 229, 0) 97.12%,
+        rgb(172, 214, 78) 130.77%
+      );
+      mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 62%,
+        rgba(0, 0, 0, 0.35) 78%,
+        #000 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 62%,
+        rgba(0, 0, 0, 0.35) 78%,
+        #000 100%
+      );
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        180deg,
+        #0f0f0f 0%,
+        #0f0f0f 58%,
+        rgba(15, 15, 15, 0.94) 78%,
+        rgba(15, 15, 15, 0.72) 92%,
+        rgba(15, 15, 15, 0.35) 100%
+      );
+    }
+  }
+
+  &__coins {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &__coin {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    &--btc {
+      left: 7%;
+      top: 28%;
+      width: min(54px, 12vw);
+      transform: rotate(-20deg);
+      filter: blur(2px);
+      opacity: 0.7;
+
+      @media (max-width: 992px) {
+        left: 4%;
+        top: 12%;
+        width: 40px;
+      }
+    }
+
+    &--alt {
+      right: 8%;
+      top: 31%;
+      width: min(61px, 12vw);
+      transform: rotate(-136deg);
+      filter: blur(2px);
+      opacity: 0.7;
+
+      @media (max-width: 992px) {
+        right: 4%;
+        top: 10%;
+        width: 44px;
+      }
+    }
+
+    &--triangle {
+      left: 15%;
+      bottom: 8%;
+      width: min(122px, 22vw);
+      transform: rotate(32deg);
+
+      @media (max-width: 992px) {
+        left: 0;
+        bottom: 4%;
+        width: 72px;
+      }
+    }
+
+    &--eth {
+      right: 12%;
+      bottom: 6%;
+      width: min(121px, 22vw);
+      transform: rotate(-45deg);
+
+      @media (max-width: 992px) {
+        right: 0;
+        bottom: 2%;
+        width: 72px;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 867px;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      gap: 32px;
+    }
+
+    .main-button {
+      margin: 0 auto;
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__badge {
+    margin: 0;
+    padding: 16px;
+    border-radius: 0 16px 16px 16px;
+    background: var(--4, #97d80f);
+    color: var(--2, #0f0f0f);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      font-size: 18px;
+      padding: 12px 16px;
+    }
+  }
+
+  &__lead {
+    margin: 0;
+    color: var(--1, #f0f0f7);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      max-width: 280px;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--1, #f0f0f7);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+
+    @media (max-width: 992px) {
+      font-size: 32px;
+      line-height: 120%;
+    }
+  }
+}

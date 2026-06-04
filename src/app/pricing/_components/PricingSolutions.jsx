@@ -19,14 +19,6 @@ function PricingSolutions() {
           <RevealWrapper origin="bottom">
             <h2>Explore Enlight pricing solutions</h2>
           </RevealWrapper>
-          <RevealWrapper origin="bottom">
-            <p>
-              Our pricing tiers are tailored to the specific needs of crypto
-              projects. Based on our analysis of over 10,000 projects and <br />
-              marketing campaigns, we've developed packages to suit various
-              project requirements.
-            </p>
-          </RevealWrapper>
           <RevealList
             origin="bottom"
             interval={0}

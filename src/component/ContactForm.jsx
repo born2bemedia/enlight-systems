@@ -27,6 +27,12 @@ const ValidationSchema = Yup.object().shape({
   reply: Yup.string().email("Please provide a valid email address."),
 });
 
+import {
+  QUICK_CONTACT_CHALLENGE_OPTIONS,
+  QUICK_CONTACT_LABELS,
+  QUICK_CONTACT_PLACEHOLDERS,
+} from "@/src/app/quick-contact/quickContactData";
+
 const assistanceOptions = [
   { value: "Dashboard Setup Assistance", label: "Dashboard Setup Assistance" },
   { value: "Module Customization Help", label: "Module Customization Help" },
@@ -99,7 +105,20 @@ const handleSubmit = async (
   }
 };
 
-function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
+function ContactForm({
+  handleFormReset,
+  popupTitleContent = "",
+  subtitle,
+  variant = "default",
+}) {
+  const isQuick = variant === "quick";
+  const selectOptions = isQuick
+    ? QUICK_CONTACT_CHALLENGE_OPTIONS
+    : assistanceOptions;
+  const defaultAssistance = isQuick
+    ? "Low campaign performance"
+    : "Dashboard Setup Assistance";
+
   const [country, setCountry] = useState("gb");
 
   useEffect(() => {
@@ -118,7 +137,7 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
     <div>
       <Formik
         initialValues={{
-          assistance: "Dashboard Setup Assistance",
+          assistance: defaultAssistance,
           problem: "",
           name: "",
           email: "",
@@ -145,12 +164,20 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
           handleChange,
         }) => (
           <>
-            <Form className="contact-form">
+            <Form
+              className={`contact-form${
+                isQuick ? " contact-form--quick" : ""
+              }`}
+            >
               <div className="form-block">
-                <label>I need assistance with:</label>
+                <label>
+                  {isQuick
+                    ? QUICK_CONTACT_LABELS.challenge
+                    : "I need assistance with:"}
+                </label>
                 <div className="input-wrap">
                   <Select
-                    options={assistanceOptions}
+                    options={selectOptions}
                     classNamePrefix={
                       touched.assistance && errors.assistance
                         ? "invalid select"
@@ -160,7 +187,7 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
                       setFieldValue("assistance", option.value)
                     }
                     onBlur={() => setFieldTouched("assistance", true)}
-                    value={assistanceOptions.find(
+                    value={selectOptions.find(
                       (option) => option.value === values.assistance
                     )}
                   />
@@ -169,10 +196,19 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
               </div>
 
               <div className="form-block">
-                <label>Tell us about your problem with the dashboard:</label>
+                <label>
+                  {isQuick
+                    ? QUICK_CONTACT_LABELS.situation
+                    : "Tell us about your problem with the dashboard:"}
+                </label>
                 <div className="input-wrap">
                   <Field
+                    as={isQuick ? "textarea" : "input"}
                     name="problem"
+                    rows={isQuick ? 4 : undefined}
+                    placeholder={
+                      isQuick ? QUICK_CONTACT_PLACEHOLDERS.situation : undefined
+                    }
                     className={
                       touched.problem && errors.problem ? "invalid" : ""
                     }
@@ -182,10 +218,17 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
               </div>
 
               <div className="form-block">
-                <label>How should we address you?</label>
+                <label>
+                  {isQuick
+                    ? QUICK_CONTACT_LABELS.name
+                    : "How should we address you?"}
+                </label>
                 <div className="input-wrap">
                   <Field
                     name="name"
+                    placeholder={
+                      isQuick ? QUICK_CONTACT_PLACEHOLDERS.name : undefined
+                    }
                     className={touched.name && errors.name ? "invalid" : ""}
                   />
                   <ErrorMessage name="name" component="span" />
@@ -193,21 +236,37 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
               </div>
 
               <div className="form-block">
-                <label>How can we contact you?</label>
+                <label>
+                  {isQuick
+                    ? QUICK_CONTACT_LABELS.contact
+                    : "How can we contact you?"}
+                </label>
                 <div className="input-wrap">
                   <Field
                     name="email"
                     type="email"
+                    placeholder={
+                      isQuick ? QUICK_CONTACT_PLACEHOLDERS.email : undefined
+                    }
                     className={touched.email && errors.email ? "invalid" : ""}
                   />
                   <ErrorMessage name="email" component="span" />
                 </div>
+                {isQuick && (
+                  <label className="contact-form__phone-label">
+                    {QUICK_CONTACT_LABELS.phone}
+                  </label>
+                )}
                 <div className="input-wrap">
                   <PhoneInput
                     country={country}
-                    value=""
+                    value={values.phone}
                     onChange={(value) => setFieldValue("phone", value)}
-                    placeholder="Your phone"
+                    placeholder={
+                      isQuick
+                        ? QUICK_CONTACT_PLACEHOLDERS.phone
+                        : "Your phone"
+                    }
                     className={touched.phone && errors.phone ? "invalid" : ""}
                   />
                   <ErrorMessage name="phone" component="span" />
@@ -252,12 +311,21 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
 
               <div className="form-block">
                 <label>
-                  Is there anybody we should send a copy of <br />
-                  our reply to?
+                  {isQuick ? (
+                    QUICK_CONTACT_LABELS.reply
+                  ) : (
+                    <>
+                      Is there anybody we should send a copy of <br />
+                      our reply to?
+                    </>
+                  )}
                 </label>
                 <div className="input-wrap">
                   <Field
                     name="reply"
+                    placeholder={
+                      isQuick ? QUICK_CONTACT_PLACEHOLDERS.reply : undefined
+                    }
                     className={touched.reply && errors.reply ? "invalid" : ""}
                   />
                   <ErrorMessage name="reply" component="span" />
@@ -265,7 +333,11 @@ function ContactForm({ handleFormReset, popupTitleContent = "", subtitle }) {
               </div>
 
               <div className="form-block">
-                <label>Upload a screenshot of a problem you experience:</label>
+                <label>
+                  {isQuick
+                    ? QUICK_CONTACT_LABELS.file
+                    : "Upload a screenshot of a problem you experience:"}
+                </label>
                 <div className="input-wrap file-wrap">
                   <span
                     className="upload-custom"

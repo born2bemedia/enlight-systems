@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
+import "@/public/scss/home-stats.scss";
+import "@/public/scss/home-domain-form.scss";
+import "@/public/scss/home-calculator-cta.scss";
 import "@/public/scss/resources.scss";
-import ResourcesHero from './_components/ResourcesHero';
-import ResourcesLoop from './_components/ResourcesLoop';
+import ResourcesHero from "./_components/ResourcesHero";
+import ResourcesStats from "./_components/ResourcesStats";
+import ResourcesIntro from "./_components/ResourcesIntro";
+import ResourcesLoop from "./_components/ResourcesLoop";
+import ResourcesAssistance from "./_components/ResourcesAssistance";
 
 export const metadata = {
   title: "Crypto Marketing Resources",
@@ -17,9 +23,12 @@ function ResourcesPage() {
   return (
     <>
       <ResourcesHero />
+      <ResourcesStats />
+      <ResourcesIntro />
       <ResourcesLoop />
+      <ResourcesAssistance />
     </>
-  )
+  );
 }
 
 export default ResourcesPage

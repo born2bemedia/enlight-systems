@@ -6,10 +6,32 @@ export async function getPost(slug) {
   const text = await readFile(`./src/lib/content/${slug}.md`, "utf8");
   const {
     content,
-    data: { title, seo_title, image, seo_description },
+    data: {
+      title,
+      seo_title,
+      image,
+      seo_description,
+      date = "",
+      views = "",
+      toc = [],
+      hero_width = 700,
+      hero_height = 538,
+    },
   } = matter(text);
   const body = marked(content);
-  return { slug, title, image, seo_title, seo_description, body };
+  return {
+    slug,
+    title,
+    image,
+    heroWidth: hero_width,
+    heroHeight: hero_height,
+    seo_title,
+    seo_description,
+    date,
+    views,
+    toc,
+    body,
+  };
 }
 
 export async function getSlugs() {

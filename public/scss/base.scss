@@ -14,6 +14,11 @@ body {
 		
 	}
 }
+
+main {
+	position: relative;
+	z-index: 1;
+}
 *{
 	outline:none!important;
 	-webkit-tap-highlight-color: transparent;

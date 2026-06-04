@@ -1,6 +1,8 @@
 import React from "react";
 import "@/public/scss/pricing.scss";
+import "@/public/scss/pricing-setup.scss";
 import PricingHero from "./_components/PricingHero";
+import PricingSetupFinder from "./_components/PricingSetupFinder";
 import PricingLast from "./_components/PricingLast";
 import PricingSolutions from "./_components/PricingSolutions";
 
@@ -20,6 +22,7 @@ function PricingPage() {
   return (
     <>
       <PricingHero />
+      <PricingSetupFinder />
       <PricingSolutions />
       <PricingLast />
     </>

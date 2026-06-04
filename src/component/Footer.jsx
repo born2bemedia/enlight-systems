@@ -2,40 +2,63 @@ import React from "react";
 import "@/public/scss/footer.scss";
 import Link from "next/link";
 
+const FOOTER_NAV = [
+  [
+    { href: "/our-platform", label: "Our Platform" },
+    { href: "/purpose", label: "Purposes" },
+  ],
+  [
+    { href: "/resources", label: "Resources" },
+    { href: "/pricing", label: "Pricing" },
+  ],
+  [
+    { href: "/about-us", label: "About Us" },
+    { href: "/contact-us", label: "Contact Us" },
+  ],
+];
+
 function Footer() {
   return (
     <footer>
       <div className="_container">
         <div className="footer-top">
-          <div class="foter-left">
+          <div className="footer-left">
             <Link href="/">
-              <img alt="logo" src="/logo.svg" />
+              <img alt="Enlight" src="/logo.svg" />
             </Link>
+            <p className="footer-tagline">
+              360° visibility for crypto and fintech marketing
+            </p>
             <div className="soc">
               <Link
                 href="https://www.facebook.com/enlight.facebook"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src="/images/fb.svg" />
+                <img src="/images/fb.svg" alt="Facebook" />
               </Link>
               <Link
                 href="https://www.linkedin.com/company/enlight-linkedin/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                <img src="/images/in.svg" />
+                <img src="/images/in.svg" alt="LinkedIn" />
               </Link>
             </div>
           </div>
-          <nav>
-            <Link href="/">Main page</Link>
-            <Link href="/purpose">Purposes</Link>
-            <Link href="/resources">Resources</Link>
-            <Link href="/pricing">Pricing</Link>
-            <Link href="/get-started">Get Started</Link>
-            <Link href="/about-us">About us</Link>
-            <Link href="/quick-contact">Quick Contact</Link>
-            <Link href="/contact-us">Contact Us</Link>
+
+          <nav className="footer-nav" aria-label="Footer">
+            {FOOTER_NAV.map((column, columnIndex) => (
+              <div key={columnIndex} className="footer-nav__col">
+                {column.map(({ href, label }) => (
+                  <Link key={href} href={href}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            ))}
           </nav>
+
           <div className="footer-contacts">
             <Link href="mailto:info@enlight.business">
               <svg
@@ -44,8 +67,9 @@ function Footer() {
                 height="25"
                 viewBox="0 0 25 25"
                 fill="none"
+                aria-hidden
               >
-                <g clip-path="url(#clip0_9_808)">
+                <g clipPath="url(#footer-clip-email)">
                   <path
                     d="M20.2728 7.98832L12.5008 14.8369L4.7272 7.98822C4.41767 7.71552 3.94586 7.74549 3.67326 8.05482C3.40077 8.36425 3.43044 8.83607 3.73997 9.10876L12.0073 16.3925C12.1484 16.5167 12.3247 16.5788 12.5009 16.5788C12.6772 16.5788 12.8536 16.5167 12.9947 16.3924L21.2603 9.10866C21.5696 8.83607 21.5994 8.36415 21.3268 8.05472C21.054 7.74559 20.5823 7.71572 20.2728 7.98832Z"
                     fill="#97D80F"
@@ -56,7 +80,7 @@ function Footer() {
                   />
                 </g>
                 <defs>
-                  <clipPath id="clip0_9_808">
+                  <clipPath id="footer-clip-email">
                     <rect
                       width="24"
                       height="24"
@@ -75,6 +99,7 @@ function Footer() {
                 height="25"
                 viewBox="0 0 24 25"
                 fill="none"
+                aria-hidden
               >
                 <path
                   d="M20.6869 4.12296C18.6594 2.09541 15.9635 0.978891 13.0962 0.979004C12.6264 0.979004 12.2457 1.35984 12.2457 1.82958C12.2457 2.29933 12.6265 2.68016 13.0962 2.68016C15.5092 2.68004 17.7777 3.61965 19.484 5.32591C21.1903 7.03216 22.1299 9.30082 22.1298 11.7139C22.1298 12.1836 22.5105 12.5644 22.9804 12.5644C23.4502 12.5644 23.831 12.1836 23.831 11.714C23.8311 8.84639 22.7146 6.15051 20.6869 4.12296Z"
@@ -91,15 +116,16 @@ function Footer() {
               </svg>
               <span>+44 745 814 94 08</span>
             </Link>
-            <Link href="#">
+            <div className="footer-contacts__item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
                 height="25"
                 viewBox="0 0 25 25"
                 fill="none"
+                aria-hidden
               >
-                <g clip-path="url(#clip0_9_812)">
+                <g clipPath="url(#footer-clip-address)">
                   <path
                     d="M12.4997 0.979004C7.40013 0.979004 3.25143 5.12826 3.25143 10.2284C3.25143 13.8727 4.77716 17.559 7.66367 20.8889C9.8196 23.376 11.9562 24.7851 12.0462 24.8439C12.1839 24.934 12.3419 24.979 12.4998 24.979C12.6577 24.979 12.8157 24.934 12.9535 24.8439C13.0434 24.7851 15.1803 23.376 17.3362 20.889C20.223 17.559 21.7488 13.8727 21.7488 10.2284C21.7487 5.12826 17.5995 0.979004 12.4997 0.979004ZM12.4997 23.1319C10.7988 21.8644 4.90959 16.9864 4.90959 10.2284C4.90959 6.04256 8.31444 2.63716 12.4997 2.63716C16.6853 2.63716 20.0905 6.04256 20.0905 10.2284C20.0905 16.9864 14.2008 21.8644 12.4997 23.1319Z"
                     fill="#97D80F"
@@ -110,7 +136,7 @@ function Footer() {
                   />
                 </g>
                 <defs>
-                  <clipPath id="clip0_9_812">
+                  <clipPath id="footer-clip-address">
                     <rect
                       width="24"
                       height="24"
@@ -121,20 +147,54 @@ function Footer() {
                 </defs>
               </svg>
               <span>
-                <b>Registered address:</b> Rooms 1703-1704, 17/F, Tung <br />
-                Chiu Commercial Centre, 193 Lockhart Road, <br />
-                Wanchai, Hong Kong
+                <b>Registered address:</b> Rooms 1703-1704, 17/F, Tung Chiu
+                Commercial Centre, 193 Lockhart Road, Wanchai, Hong Kong
               </span>
-            </Link>
+            </div>
+            <div className="footer-contacts__item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                aria-hidden
+              >
+                <g clipPath="url(#footer-clip-address-2)">
+                  <path
+                    d="M12.4997 0.979004C7.40013 0.979004 3.25143 5.12826 3.25143 10.2284C3.25143 13.8727 4.77716 17.559 7.66367 20.8889C9.8196 23.376 11.9562 24.7851 12.0462 24.8439C12.1839 24.934 12.3419 24.979 12.4998 24.979C12.6577 24.979 12.8157 24.934 12.9535 24.8439C13.0434 24.7851 15.1803 23.376 17.3362 20.889C20.223 17.559 21.7488 13.8727 21.7488 10.2284C21.7487 5.12826 17.5995 0.979004 12.4997 0.979004ZM12.4997 23.1319C10.7988 21.8644 4.90959 16.9864 4.90959 10.2284C4.90959 6.04256 8.31444 2.63716 12.4997 2.63716C16.6853 2.63716 20.0905 6.04256 20.0905 10.2284C20.0905 16.9864 14.2008 21.8644 12.4997 23.1319Z"
+                    fill="#97D80F"
+                  />
+                  <path
+                    d="M12.5003 6.55591C10.4762 6.55591 8.82956 8.20268 8.82956 10.2269C8.82956 12.2507 10.4762 13.8971 12.5003 13.8971C14.5243 13.8971 16.1709 12.2507 16.1709 10.2269C16.1709 8.20279 14.5242 6.55591 12.5003 6.55591ZM12.5003 12.239C11.3905 12.239 10.4877 11.3364 10.4877 10.2269C10.4877 9.11698 11.3905 8.21406 12.5003 8.21406C13.6099 8.21406 14.5127 9.11698 14.5127 10.2269C14.5127 11.3364 13.6099 12.239 12.5003 12.239Z"
+                    fill="#97D80F"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="footer-clip-address-2">
+                    <rect
+                      width="24"
+                      height="24"
+                      fill="white"
+                      transform="translate(0.5 0.979004)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span>
+                <b>Operational Address:</b> 138 Gloucester Rd, Wan Chai, Hong
+                Kong
+              </span>
+            </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <nav>
-            <Link href="/terms-of-service">Terms of Service</Link>
+          <nav aria-label="Legal">
+            <Link href="/terms-of-service">Terms and Conditions</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>
           </nav>
-          <p>All Rights Reserved © Marketera Limited</p>
+          <p>All Rights Reserved © Marketera HK</p>
         </div>
       </div>
     </footer>

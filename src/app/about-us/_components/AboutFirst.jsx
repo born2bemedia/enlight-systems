@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+
 import React from "react";
 import { RevealWrapper, RevealList } from "next-reveal";
 import Image from "next/image";
@@ -15,20 +15,20 @@ function AboutFirst() {
       >
         <div className="image-container">
           <Image
-            src={"/images/about/about-first.webp"}
+            src="/images/about/about-first.webp"
             width={816}
             height={470}
-            alt="about-first"
+            alt=""
           />
         </div>
         <div className="image-container">
           <Image
-            src={"/images/about/coins-hero.webp"}
+            src="/images/about/coins-hero.webp"
             width={625}
             height={323}
-            alt="coins-hero"
+            alt=""
             style={{
-              animation: `floatAnimation 5s infinite ease-in-out`,
+              animation: "floatAnimation 5s infinite ease-in-out",
               animationDelay: "0s",
             }}
           />
@@ -38,12 +38,13 @@ function AboutFirst() {
         <div className="about-first__body">
           <RevealWrapper origin="bottom" delay={0}>
             <h1>
-              Empowering <br />
-              crypto marketers
+              The story behind <span className="about-first__brand">Enlight</span>
             </h1>
           </RevealWrapper>
-          <RevealWrapper origin="bottom" delay={0}>
-            <p>Our journey</p>
+          <RevealWrapper origin="bottom" delay={100}>
+            <p className="about-first__lead">
+              Why we built a different approach to crypto marketing.
+            </p>
           </RevealWrapper>
         </div>
       </div>

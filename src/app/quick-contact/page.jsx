@@ -5,11 +5,11 @@ import QuickContactBlock from "./_components/QuickContactBlock";
 export const metadata = {
   title: "Quick Contact",
   description:
-    "Get immediate dedicated assistance from the Enlight team. Choose your question or problem, describe the issue and Send a request to a dedicated expert. We will answer asap!",
+    "Not sure what setup you need? Tell us about your marketing challenges and get help identifying gaps and the right Enlight solution.",
   openGraph: {
     title: "Quick Contact",
     description:
-      "Get immediate dedicated assistance from the Enlight team. Choose your question or problem, describe the issue and Send a request to a dedicated expert. We will answer asap!",
+      "Not sure what setup you need? Tell us about your marketing challenges and get help identifying gaps and the right Enlight solution.",
     images: "https://enlight.systems/images/meta.png",
   },
 };

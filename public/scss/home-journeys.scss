@@ -1,0 +1,142 @@
+.home-journeys {
+  margin: 180px 0;
+
+  @media (max-width: 992px) {
+    margin: 80px 0;
+  }
+
+  &__panel {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 312px;
+    padding: 48px 40px;
+    border-radius: 0 24px 24px 24px;
+    background: linear-gradient(
+      157deg,
+      #333cef 8.25%,
+      #0b98ff 37.98%,
+      #9ce500 67.71%,
+      #acd64e 97.44%
+    );
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 0;
+      padding: 40px 24px 220px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(
+        90deg,
+        #0f0f0f 0%,
+        #0f0f0f 38%,
+        rgba(15, 15, 15, 0.7) 52%,
+        rgba(15, 15, 15, 0) 72%
+      );
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: url("/images/home/journeys-overlay.png") right center / cover
+        no-repeat;
+      opacity: 0.35;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    flex: 0 1 729px;
+    max-width: 729px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+
+    @media (max-width: 992px) {
+      flex: none;
+      max-width: none;
+      align-items: stretch;
+      text-align: left;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--1, #f0f0f7);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+
+    @media (max-width: 992px) {
+      font-size: 36px;
+    }
+  }
+
+  p {
+    margin: 0;
+    color: var(--1, #f0f0f7);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  &__visual {
+    position: absolute;
+    z-index: 1;
+    right: 8px;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 36%;
+    max-width: 400px;
+    pointer-events: none;
+
+    @media (max-width: 1375px) {
+      width: 40%;
+      max-width: 360px;
+    }
+
+    @media (max-width: 992px) {
+      left: 50%;
+      right: auto;
+      bottom: 0;
+      width: min(90%, 320px);
+      max-width: 320px;
+      justify-content: center;
+      transform: translateX(-50%);
+
+      img {
+        margin-bottom: -50px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      display: block;
+      object-fit: contain;
+      object-position: bottom right;
+
+      @media (max-width: 992px) {
+        max-height: 260px;
+        object-position: bottom center;
+      }
+    }
+  }
+}

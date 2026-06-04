@@ -17,6 +17,7 @@ function Header() {
             <img alt="logo" src="/logo.svg" />
           </Link>
           <nav>
+            <Link href="/our-platform">Our Platform</Link>
             <Link href="/purpose">Purposes</Link>
             <Link href="/resources">Resources</Link>
             <Link href="/pricing">Pricing</Link>

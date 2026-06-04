@@ -1,26 +1,40 @@
-import Image from "next/image";
 import "@/public/scss/home.scss";
+import "@/public/scss/home-stats.scss";
+import "@/public/scss/home-domain-form.scss";
+import "@/public/scss/home-reputation.scss";
+import "@/public/scss/home-content.scss";
+import "@/public/scss/home-journeys.scss";
+import "@/public/scss/home-journey-flow.scss";
+import "@/public/scss/home-calculator.scss";
+import "@/public/scss/home-calculator-cta.scss";
+import "@/public/scss/home-features.scss";
+import "@/public/scss/home-insights.scss";
 import HomeFirst from "../component/home/HomeFirst";
-import HomeSecond from "../component/home/HomeSecond";
-import HomeFourth from "../component/home/HomeFourth";
-import HomeSixth from "../component/home/HomeSixth";
-import HomeThird from "../component/home/HomeThird";
-import HomeEight from "../component/home/HomeEight";
-import HomeNine from "../component/home/HomeNine";
-import HomeLast from "../component/home/HomeLast";
-import HomeFifth from "../component/home/HomeFifth";
-import HomeSeven from "../component/home/HomeSeven";
+import HomeStats from "../component/home/HomeStats";
+import HomeReputation from "../component/home/HomeReputation";
+import HomeContent from "../component/home/HomeContent";
+import HomeJourneys from "../component/home/HomeJourneys";
+import HomeJourneyFlow from "../component/home/HomeJourneyFlow";
+import HomeJourneyTo from "../component/home/HomeJourneyTo";
+import HomeCalculator from "../component/home/HomeCalculator";
+import HomeCalculatorCta from "../component/home/HomeCalculatorCta";
+import HomeFeatures from "../component/home/HomeFeatures";
+import HomeInsights from "../component/home/HomeInsights";
 
 export default function Home() {
   return (
     <>
       <HomeFirst />
-      <HomeThird />
-      <HomeFourth />
-
-      <HomeSixth />
-      <HomeFifth />
-      <HomeLast />
+      <HomeStats />
+      <HomeReputation />
+      <HomeContent />
+      <HomeJourneys />
+      <HomeJourneyFlow />
+      <HomeJourneyTo />
+      <HomeCalculator />
+      <HomeCalculatorCta />
+      <HomeFeatures />
+      <HomeInsights />
     </>
   );
 }

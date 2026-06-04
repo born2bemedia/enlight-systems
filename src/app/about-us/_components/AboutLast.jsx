@@ -15,7 +15,7 @@ function AboutLast() {
         <RevealWrapper origin="bottom">
             <Link href="/get-started" className="main-button">
               <span>
-                Get Started
+                Get started
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

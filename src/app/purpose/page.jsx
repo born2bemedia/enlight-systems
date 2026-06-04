@@ -2,7 +2,7 @@ import "@/public/scss/purpose.scss";
 import PurposeHero from "./_components/PurposeHero";
 import PurposeLast from "./_components/PurposeLast";
 import PurposeSecond from "./_components/PurposeSecond";
-import FormPopup from "@/src/component/FormPopup";
+import { PURPOSE_SECOND_ROWS } from "./purposeSecondData";
 
 export const metadata = {
   title: "Dashboard Application",
@@ -18,7 +18,7 @@ function PurposePage() {
   return (
     <>
       <PurposeHero />
-      <PurposeSecond/>
+      <PurposeSecond rows={PURPOSE_SECOND_ROWS} />
       <PurposeLast />
       
     </>

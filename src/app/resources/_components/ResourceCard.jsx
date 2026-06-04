@@ -4,7 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-function ResourceCard({ title, image, slug, className, guide = false }) {
+function ResourceCard({
+  title,
+  image,
+  slug,
+  className,
+  guide = false,
+  comingSoon = false,
+}) {
   const [popupOpened, setPopupOpened] = useState(false);
 
   const handlePopup = (title) => {
@@ -15,16 +22,16 @@ function ResourceCard({ title, image, slug, className, guide = false }) {
     <>
       <div className={`resource-card ${className}`}>
         <div className="top">
-          <img src={`/images/resources/${image}`} />
+          <img src={`/images/resources/${image}`} alt="" />
         </div>
         <div className="bottom">
           <div>
             <h3 dangerouslySetInnerHTML={{ __html: title }} />
           </div>
-          {guide ? (
+          {guide || comingSoon ? (
             <button onClick={() => handlePopup()} className="main-button">
               <span>
-                Read more
+                {comingSoon ? "Subscribe to get" : "Read more"}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

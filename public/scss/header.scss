@@ -5,8 +5,11 @@ header{
     width: 100%;
     left: 0;
     top: 0;
-    z-index: 9999;
+    z-index: 10000;
+    isolation: isolate;
     .head-wrap{
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;

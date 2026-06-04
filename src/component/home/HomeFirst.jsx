@@ -16,15 +16,16 @@ function HomeFirst() {
         <div className="image-container">
           <Image
             src={"/images/home/home-first.webp"}
-            width={816}
-            height={470}
+            width={980}
+            height={565}
+            priority
           />
         </div>
         <div className="image-container">
           <Image
             src={"/images/home/coins-hero.webp"}
-            width={695}
-            height={413}
+            width={830}
+            height={493}
             style={{
               animation: `floatAnimation 5s infinite ease-in-out`,
               animationDelay: "0s",
@@ -35,22 +36,19 @@ function HomeFirst() {
       <div className="_container">
         <div className="home-first__body">
           <RevealWrapper origin="bottom" delay={0}>
+            <span className="home-first__overline">Finally.</span>
             <h1>
-              Your go-to crypto <br />
-              marketing platform
+              Crypto marketing <br />
+              that works.
             </h1>
           </RevealWrapper>
           <RevealWrapper origin="bottom" delay={0}>
-            <p>
-              Streamline all your crypto marketing tasks, analyse, scale, and
-              optimise your efforts <br />
-              for unprecedented success in a single, flexible interface.
-            </p>
+            <p>With Enlight.</p>
           </RevealWrapper>
           <RevealWrapper origin="bottom" delay={0}>
-            <Link href="/get-started" className="main-button">
+            <Link href="/purpose" className="main-button">
               <span>
-                Get Started
+                Learn How
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

@@ -1,17 +1,19 @@
 import React from "react";
 import "@/public/scss/about.scss";
 import AboutFirst from "./_components/AboutFirst";
-import AboutFourth from "./_components/AboutFourth";
+import AboutStats from "./_components/AboutStats";
+import AboutProblem from "./_components/AboutProblem";
+import AboutValue from "./_components/AboutValue";
 import AboutLast from "./_components/AboutLast";
-import AboutSecond from "./_components/AboutSecond";
-import AboutThird from "./_components/AboutThird";
 
 export const metadata = {
   title: "About Us",
-  description: "Meet Enlight Systems! Learn how we came to design Enlight Dashboard, what challenges, problems, and issues the dashboard covers, and how we will optimize it!",
+  description:
+    "The story behind Enlight — why we built a different approach to crypto marketing, and how we help projects gain visibility and scale with confidence.",
   openGraph: {
     title: "About Us",
-    description: "Meet Enlight Systems! Learn how we came to design Enlight Dashboard, what challenges, problems, and issues the dashboard covers, and how we will optimize it!",
+    description:
+      "The story behind Enlight — why we built a different approach to crypto marketing, and how we help projects gain visibility and scale with confidence.",
     images: "https://enlight.systems/images/meta.png",
   },
 };
@@ -20,9 +22,9 @@ function AboutUs() {
   return (
     <>
       <AboutFirst />
-      <AboutSecond />
-      <AboutThird />
-      <AboutFourth />
+      <AboutStats />
+      <AboutProblem />
+      <AboutValue />
       <AboutLast />
     </>
   );

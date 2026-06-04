@@ -1,46 +1,27 @@
-import { NextResponse, NextRequest } from "next/server";
-const nodemailer = require("nodemailer");
+import { NextResponse } from "next/server";
+import { sendMail } from "@/src/lib/mail";
 
 export async function POST(request) {
   try {
-    const requestBody = await request.text();
-    const bodyJSON = JSON.parse(requestBody);
+    const bodyJSON = JSON.parse(await request.text());
     const { assistance, problem, name, email, phone, reply, messanger, file } =
       bodyJSON;
-
-    // Configure nodemailer with Gmail SMTP
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "noreply@enlight.systems", // Your Gmail email
-        pass: "jem5uqk_RMZ@muk!udv", // Your Gmail password or app password
-      },
-      tls: {
-        rejectUnauthorized: false, // This bypasses the certificate validation
-      },
-    });
 
     const attachments = [];
 
     if (file) {
-      // Add the file attachment
       attachments.push({
-        filename: file.filename, // Use the actual filename from the client
-        content: file.base64, // Base64 encoded data
-        encoding: 'base64'
+        filename: file.filename,
+        content: file.base64,
+        encoding: "base64",
       });
     }
 
-    const mailOptions = {
-      from: '"Enlight Systems" <noreply@enlight.systems>', // Sender address
-      to: "noreply@enlight.systems", // Change to your recipient's email
+    await sendMail({
       subject: "Crypto marketing assistance request",
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessanger: ${messanger}\nNeed assistance with: ${assistance}\nProblem: ${problem}\nReply: ${reply}\n`,
-      attachments: attachments,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
+      attachments,
+    });
 
     const htmlEmail = `
   <html>
@@ -87,14 +68,11 @@ export async function POST(request) {
   </html>
   `;
 
-    const mailOptionsUser = {
-      from: '"Enlight Systems" <noreply@enlight.systems>', // Sender address
-      to: email, // Change to your recipient's email
+    await sendMail({
+      to: email,
       subject: "Your Request Has Been Received",
       html: htmlEmail,
-    };
-
-    await transporter.sendMail(mailOptionsUser);
+    });
 
     return NextResponse.json({ message: "Success: email was sent" });
   } catch (error) {

@@ -1,0 +1,28 @@
+---
+description: Figma MCP server rules for Enlight (Next.js + SCSS)
+alwaysApply: true
+---
+
+# Figma MCP Integration
+
+- The Figma MCP server provides an assets endpoint for images and SVGs.
+- If Figma MCP returns a `localhost` source for an image or SVG, use that source directly.
+- Do not import new icon packages when assets are provided in the Figma payload.
+- Do not use placeholders when a localhost asset source is provided.
+
+## Required flow for Figma-driven UI changes
+
+1. Run `get_design_context` for the exact node(s).
+2. If the response is truncated, use `get_metadata`, then re-fetch specific nodes.
+3. Run `get_screenshot` for visual reference.
+4. Download required assets, then implement.
+5. Translate output into this project's stack: **Next.js App Router**, **React**, **SCSS** (not Tailwind).
+6. Reuse existing components and tokens (`#97D80F`, `#F0F0F7`, `#2A2A2A`, Epilogue font).
+7. Match section spacing conventions: **180px** section margins, **24px** gaps, **40px** padding where applicable.
+
+## Implementation rules
+
+- Treat Figma MCP React + Tailwind output as design reference, not final code style.
+- Place homepage sections in `src/component/home/` and styles in `public/scss/`.
+- Reuse `._container`, `.main-button`, and existing home block patterns.
+- Prefer existing images in `public/images/home/` when suitable.

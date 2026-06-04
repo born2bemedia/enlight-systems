@@ -3,14 +3,22 @@ import React from "react";
 import { RevealList, RevealWrapper } from "next-reveal";
 import Link from "next/link";
 
-function HomeLast() {
+function HomeLast({
+  title = (
+    <>
+      Enlight offers everything you need to <br />
+      optimise crypto marketing workflows!
+    </>
+  ),
+  ctaHref = "/get-started",
+  ctaLabel = "Get Started",
+  className = "",
+}) {
   return (
-    <section className="home-last">
+    <section className={`home-last ${className}`.trim()}>
       <div className="_container">
       <RevealWrapper origin="bottom">
-            <h2>
-            Enlight offers everything you need to <br/>optimise crypto marketing workflows!
-            </h2>
+            <h2>{title}</h2>
           </RevealWrapper>
           <RevealList
           origin="bottom"
@@ -210,9 +218,9 @@ function HomeLast() {
           </div>
         </RevealList>
         <RevealWrapper origin="bottom">
-            <Link href="/get-started" className="main-button">
+            <Link href={ctaHref} className="main-button">
               <span>
-                Get Started
+                {ctaLabel}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

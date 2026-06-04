@@ -4,6 +4,8 @@ import "@/public/scss/resources.scss";
 import Link from "next/link";
 import Image from "next/image";
 import ChatButton from "../_components/ChatButton";
+import SingleArticleAside from "../_components/SingleArticleAside";
+import SingleArticleFooter from "../_components/SingleArticleFooter";
 
 export async function generateStaticParams() {
   const slugs = await getSlugs();
@@ -25,26 +27,88 @@ export async function generateMetadata({ params: { slug } }) {
 
 async function SingleArticle({ params: { slug } }) {
   const post = await getPost(slug);
-  //console.log(post);
+  const hasToc = post.toc?.length > 0;
+
   return (
     <>
       <section className="single-post-top">
         <div className="_container">
           <div className="single-post-top__body">
-            <h1>{post.title}</h1>
-            <Image
-              width={670}
-              height={540}
-              src={`/images/resources/${post.image}`}
-            />
+            <div className="single-post-top__gradient" aria-hidden="true" />
+            <div className="single-post-top__overlay" aria-hidden="true" />
+
+            <div className="single-post-top__inner">
+              <div className="single-post-top__text">
+                <h1>{post.title}</h1>
+                {(post.date || post.views) && (
+                  <div className="single-post-top__meta">
+                    {post.date && (
+                      <div className="single-post-top__meta-row">
+                        <Image
+                          src="/images/resources/icon-calendar-dots.svg"
+                          width={24}
+                          height={24}
+                          alt=""
+                          aria-hidden
+                        />
+                        <span>{post.date}</span>
+                      </div>
+                    )}
+                    {post.views && (
+                      <div className="single-post-top__meta-row">
+                        <Image
+                          src="/images/resources/icon-eye.svg"
+                          width={24}
+                          height={24}
+                          alt=""
+                          aria-hidden
+                        />
+                        <span>{post.views}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="single-post-top__art" aria-hidden="true">
+              <Image
+                width={post.heroWidth}
+                height={post.heroHeight}
+                src={`/images/resources/${post.image}`}
+                alt=""
+                priority
+                className="single-post-top__art-img"
+              />
+            </div>
           </div>
         </div>
       </section>
+
       <section className="single-post-content">
         <div className="_container">
-          <div className="single-post-content__body">
-            <article dangerouslySetInnerHTML={{ __html: post.body }} />
-            <ChatButton />
+          <div className="single-post-content__panel">
+            <nav className="single-post-breadcrumbs" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span aria-hidden="true">&gt;</span>
+              <Link href="/resources">Resources</Link>
+              <span aria-hidden="true">&gt;</span>
+              <span>{post.title}</span>
+            </nav>
+
+            <div
+              className={`single-post-content__body${
+                hasToc ? " single-post-content__body--with-toc" : ""
+              }`}
+            >
+              {hasToc && <SingleArticleAside toc={post.toc} />}
+              <div className="single-post-content__main">
+                <article dangerouslySetInnerHTML={{ __html: post.body }} />
+                {!post.body.includes("post-checklist") && <ChatButton />}
+              </div>
+            </div>
+
+            <SingleArticleFooter slug={slug} />
           </div>
         </div>
       </section>
