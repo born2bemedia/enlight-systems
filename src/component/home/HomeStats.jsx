@@ -21,7 +21,7 @@ const STATS = [
   },
   {
     value: "4X",
-    text: "increase in users refusing to register due to project reputation concerns.",
+    text: "increase in users refusing to register due to project reputation concerns",
   },
 ];
 

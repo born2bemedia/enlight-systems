@@ -77,6 +77,7 @@ function MobileMenu() {
         <Link href="/about-us">About us</Link>
         <Link href="/quick-contact">Quick Contact</Link>
         <Link href="/contact-us">Contact Us</Link>
+        <Link href="/login">Log In</Link>
       </div>
     </>
   );

@@ -1,8 +1,14 @@
 import HomeJourneySplit from "./HomeJourneySplit";
-import { STATUS_TO } from "./journeyFlowData";
 
 function HomeJourneyTo() {
-  return <HomeJourneySplit heading="To this:" statusItems={STATUS_TO} />;
+  return (
+    <HomeJourneySplit
+      heading="To this:"
+      desktopSrc="/images/home/journey-flow/seconddesctop.svg"
+      mobileSrc="/images/home/journey-flow/secondmobile.svg"
+      isFollow
+    />
+  );
 }
 
 export default HomeJourneyTo;

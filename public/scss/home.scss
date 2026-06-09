@@ -302,9 +302,9 @@
   &__overline {
     display: block;
     color: var(--1, #f0f0f7);
-    font-size: 16px;
+    font-size: 24px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 140%;
     margin: 0 0 16px 0;
     @media (max-width: 992px) {
@@ -334,14 +334,14 @@
   }
   p {
     color: var(--1, #f0f0f7);
-    font-size: 16px;
+    font-size: 24px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 140%;
     margin: 0 0 88px 0;
     @media (max-width: 992px) {
       text-align: left;
-      font-size: 16px;
+      font-size: 24px;
       margin: 0;
       br {
         display: none;

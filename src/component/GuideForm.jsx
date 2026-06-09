@@ -63,24 +63,28 @@ function GuideForm({ handleFormReset, popupTitleContent = "", subtitle }) {
           setFieldTouched,
         }) => (
           <>
-            <h2>
-              We're working on a comprehensive guide to help you <br />
-              navigate our system and dashboard effectively.
-            </h2>
+            <div className="guide__intro">
+              <h2>
+                We&apos;re working on a comprehensive guide to help you
+                <br />
+                navigate our system and dashboard effectively.
+              </h2>
 
-            <p className="subtitle">
-              Leave your email below, and we'll notify you when <br />
-              the guide is available. You'll receive a link directly to your
-              inbox.
-            </p>
+              <p className="subtitle">
+                Leave your email below, and we&apos;ll notify you when
+                <br />
+                the guide is available. You&apos;ll receive a link directly to
+                your inbox.
+              </p>
+            </div>
 
-            <Form className="popup-form ">
+            <Form className="popup-form">
 
               <div className="input-wrap">
                 <Field
                   name="email"
                   type="email"
-                  placeholder="Your email"
+                  placeholder="Your email:"
                   className={touched.email && errors.email ? "invalid" : ""}
                 />
                 <ErrorMessage name="email" component="span" />

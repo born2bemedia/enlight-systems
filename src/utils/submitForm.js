@@ -21,3 +21,11 @@ export function submitDomainCheck({ domain, source, toolType }) {
     toolType,
   });
 }
+
+export function submitLandingAudit({ url, source, toolType }) {
+  return submitForm("/api/landing-audit", {
+    url,
+    source,
+    toolType,
+  });
+}

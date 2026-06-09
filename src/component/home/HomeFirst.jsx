@@ -46,7 +46,7 @@ function HomeFirst() {
             <p>With Enlight.</p>
           </RevealWrapper>
           <RevealWrapper origin="bottom" delay={0}>
-            <Link href="/purpose" className="main-button">
+            <Link href="/our-platform" className="main-button">
               <span>
                 Learn How
                 <svg

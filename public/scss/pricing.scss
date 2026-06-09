@@ -1,8 +1,12 @@
 .pricing-hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   padding-top: 200px;
   min-height: 100vh;
   margin-bottom: 150px;
+  overflow: hidden;
   @media (max-width: 1100px) {
     min-height: auto;
   }
@@ -67,6 +71,15 @@
   ._container {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    min-height: calc(100vh - 200px);
+
+    @media (max-width: 992px) {
+      min-height: 0;
+    }
   }
   h1 {
     font-size: 88px;
@@ -99,7 +112,7 @@
     position: relative;
     width: 800px;
     max-width: 100%;
-    margin: 70px auto -32px auto;
+    margin: auto auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,9 +142,10 @@
         }
 
         img {
+          display: block;
           width: 106%;
           max-width: none;
-          transform: translateY(40px);
+          transform: none;
         }
       }
 

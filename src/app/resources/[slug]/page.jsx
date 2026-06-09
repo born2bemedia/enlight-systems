@@ -101,7 +101,11 @@ async function SingleArticle({ params: { slug } }) {
                 hasToc ? " single-post-content__body--with-toc" : ""
               }`}
             >
-              {hasToc && <SingleArticleAside toc={post.toc} />}
+              {hasToc && (
+                <div className="single-post-aside-wrap">
+                  <SingleArticleAside toc={post.toc} />
+                </div>
+              )}
               <div className="single-post-content__main">
                 <article dangerouslySetInnerHTML={{ __html: post.body }} />
                 {!post.body.includes("post-checklist") && <ChatButton />}

@@ -35,6 +35,7 @@ export const PRICING_SETUP_QUESTIONS = [
   {
     id: "needs",
     label: "What do you need most?",
+    multiple: true,
     options: [
       { id: "reporting", label: "Analytics & reporting", score: 1 },
       { id: "campaigns", label: "Campaign management", score: 2 },
@@ -72,6 +73,15 @@ export function getRecommendedPlan(answers) {
   let score = 0;
 
   questions.forEach((question) => {
+    if (question.multiple) {
+      const selectedIds = answers[question.id] || [];
+      selectedIds.forEach((selectedId) => {
+        const option = question.options.find((o) => o.id === selectedId);
+        if (option) score += option.score;
+      });
+      return;
+    }
+
     const selectedId = answers[question.id];
     const option = question.options.find((o) => o.id === selectedId);
     if (option) score += option.score;

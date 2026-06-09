@@ -20,7 +20,7 @@ function HomeCalculatorCta({
   className = "",
   showBadge = true,
   badge = "Right now these are only numbers in reports.",
-  lead = "Enlight shows how your marketing actually spends budget.",
+  lead = "",
   title = "With Enlight, you will see all the metrics connected to money.",
   ctaHref = "/get-started",
   ctaLabel = "Get Started",

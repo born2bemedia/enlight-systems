@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import DomainCheckForm from "./DomainCheckForm";
-import { submitDomainCheck } from "@/src/utils/submitForm";
+import { DomainCheckingModal } from "@/src/component/DomainCheckModals";
+import { LandingAuditModal } from "@/src/component/LandingAuditModal";
+import { useLandingAuditFlow } from "@/src/hooks/useLandingAuditFlow";
 
 const COLUMNS = [
   {
@@ -35,13 +37,21 @@ const COLUMNS = [
 ];
 
 function HomeContent() {
-  const handleDomainCheck = (domain) =>
-    submitDomainCheck({
-      domain,
-      source: "Home — Content",
-      toolType: "domain-audit",
-    });
+  const {
+    checkedUrl,
+    checkingOpen,
+    reportOpen,
+    reportUrl,
+    handleLandingAudit,
+    handleCheckingClose,
+    closeReport,
+  } = useLandingAuditFlow({
+    source: "Home — Content",
+    toolType: "landing-page-audit",
+  });
+
   return (
+    <>
     <section className="home-content">
       <div className="_container">
         <h2>Content means more than you think</h2>
@@ -80,11 +90,25 @@ function HomeContent() {
           </p>
           <DomainCheckForm
             id="domain-check-content"
-            onSubmit={handleDomainCheck}
+            placeholder="https://..."
+            onSubmit={handleLandingAudit}
           />
         </div>
       </div>
     </section>
+
+      <DomainCheckingModal
+        open={checkingOpen}
+        loading={checkingOpen}
+        onClose={handleCheckingClose}
+      />
+      <LandingAuditModal
+        open={reportOpen}
+        url={checkedUrl}
+        reportUrl={reportUrl}
+        onClose={closeReport}
+      />
+    </>
   );
 }
 

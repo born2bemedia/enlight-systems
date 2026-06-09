@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { RevealList } from "next-reveal";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,7 +10,9 @@ import {
   ResourcesSpamModal,
 } from "./ResourcesDomainModals";
 import ResourcesSubscribe from "./ResourcesSubscribe";
-import { submitDomainCheck } from "@/src/utils/submitForm";
+import { useDomainCheckFlow } from "@/src/hooks/useDomainCheckFlow";
+import { useLandingAuditFlow } from "@/src/hooks/useLandingAuditFlow";
+import { LandingAuditModal } from "@/src/component/LandingAuditModal";
 import {
   RESOURCES_COMING_SOON,
   RESOURCES_FEATURED,
@@ -38,36 +39,16 @@ const ReadMoreIcon = () => (
 );
 
 function ResourcesLoop() {
-  const [checkedDomain, setCheckedDomain] = useState("");
-  const [checkingOpen, setCheckingOpen] = useState(false);
-  const [spamOpen, setSpamOpen] = useState(false);
-  const [showSpamOnClose, setShowSpamOnClose] = useState(false);
+  const spamCheck = useDomainCheckFlow({
+    source: "Resources",
+    toolType: "domain-spam-scam-check",
+    showSpamResult: true,
+  });
 
-  const handleDomainCheck = async (domain, showSpamResult = true, toolType) => {
-    const value = domain?.trim() || "your-domain.com";
-    setCheckedDomain(value);
-    setShowSpamOnClose(showSpamResult);
-    setCheckingOpen(true);
-    setSpamOpen(false);
-
-    try {
-      await submitDomainCheck({
-        domain: value,
-        source: "Resources",
-        toolType,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleCheckingClose = () => {
-    setCheckingOpen(false);
-    if (showSpamOnClose) {
-      setSpamOpen(true);
-      setShowSpamOnClose(false);
-    }
-  };
+  const auditCheck = useLandingAuditFlow({
+    source: "Resources",
+    toolType: "website-communication-audit",
+  });
 
   return (
     <>
@@ -107,9 +88,7 @@ function ResourcesLoop() {
               title={RESOURCES_TOOLS[0].title}
               description={RESOURCES_TOOLS[0].description}
               formId={RESOURCES_TOOLS[0].formId}
-              onCheck={(domain) =>
-                handleDomainCheck(domain, true, "domain-spam-scam-check")
-              }
+              onCheck={spamCheck.handleDomainCheck}
             />
 
             <h3>Most popular</h3>
@@ -126,9 +105,7 @@ function ResourcesLoop() {
               title={RESOURCES_TOOLS[1].title}
               description={RESOURCES_TOOLS[1].description}
               formId={RESOURCES_TOOLS[1].formId}
-              onCheck={(domain) =>
-                handleDomainCheck(domain, false, "website-communication-audit")
-              }
+              onCheck={auditCheck.handleLandingAudit}
             />
 
             <h3>New articles</h3>
@@ -180,11 +157,28 @@ function ResourcesLoop() {
         </div>
       </section>
 
-      <ResourcesCheckingModal open={checkingOpen} onClose={handleCheckingClose} />
+      <ResourcesCheckingModal
+        open={spamCheck.checkingOpen || auditCheck.checkingOpen}
+        loading={spamCheck.checkingOpen || auditCheck.checkingOpen}
+        onClose={
+          spamCheck.checkingOpen
+            ? spamCheck.handleCheckingClose
+            : auditCheck.handleCheckingClose
+        }
+      />
       <ResourcesSpamModal
-        open={spamOpen}
-        domain={checkedDomain}
-        onClose={() => setSpamOpen(false)}
+        open={spamCheck.spamOpen}
+        domain={spamCheck.checkResults?.domain || spamCheck.checkedDomain}
+        sources={spamCheck.checkResults?.sources}
+        status={spamCheck.checkResults?.status}
+        statusLabel={spamCheck.checkResults?.statusLabel}
+        onClose={spamCheck.closeSpam}
+      />
+      <LandingAuditModal
+        open={auditCheck.reportOpen}
+        url={auditCheck.checkedUrl}
+        reportUrl={auditCheck.reportUrl}
+        onClose={auditCheck.closeReport}
       />
     </>
   );

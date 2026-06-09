@@ -67,7 +67,10 @@ function ResourceCard({
           )}
         </div>
       </div>
-      {popupOpened && <GuidePopup closePopup={() => handlePopup()} />}
+      <GuidePopup
+        open={popupOpened}
+        onClose={() => setPopupOpened(false)}
+      />
     </>
   );
 }

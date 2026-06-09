@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import {
+  COST_METHODS,
+  calculateMarketingBudget,
+} from "@/src/lib/marketingBudgetCalculator";
 
 const SendIcon = () => (
   <svg
@@ -21,6 +25,7 @@ const SendIcon = () => (
 const EMPTY_RESULTS = {
   budget: "",
   leads: "",
+  clicks: "",
   revenue: "",
   roi: "",
 };
@@ -41,50 +46,56 @@ function formatNumber(value) {
 
 function formatPercent(value) {
   return `${new Intl.NumberFormat("de-DE", {
-    maximumFractionDigits: 1,
+    maximumFractionDigits: 2,
   }).format(value)}%`;
 }
 
 function HomeCalculator() {
+  const [costMethod, setCostMethod] = useState(COST_METHODS.LEAD);
   const [customers, setCustomers] = useState("");
   const [conversion, setConversion] = useState("");
   const [deal, setDeal] = useState("");
-  const [costPerLead, setCostPerLead] = useState("");
+  const [averageCPL, setAverageCPL] = useState("");
+  const [clickConversion, setClickConversion] = useState("");
+  const [averageCPC, setAverageCPC] = useState("");
   const [results, setResults] = useState(EMPTY_RESULTS);
+  const isCostPerClick = costMethod === COST_METHODS.CLICK;
+
+  const resetResults = () => {
+    setResults(EMPTY_RESULTS);
+  };
+
+  const handleMethodChange = (value) => {
+    setCostMethod(value);
+    resetResults();
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const monthlyCustomers = Number(customers);
-    const conversionRate = Number(conversion);
-    const averageDeal = Number(deal);
-    const leadCost = Number(costPerLead);
+    const calculated = calculateMarketingBudget({
+      costMethod,
+      targetCustomers: customers,
+      leadConversionRate: conversion,
+      averageDealSize: deal,
+      averageCPL,
+      clickConversionRate: clickConversion,
+      averageCPC,
+    });
 
-    if (
-      !monthlyCustomers ||
-      !conversionRate ||
-      !averageDeal ||
-      !leadCost ||
-      conversionRate <= 0 ||
-      conversionRate > 100
-    ) {
+    if (!calculated) {
       setResults(EMPTY_RESULTS);
       return;
     }
 
-    const requiredLeads = monthlyCustomers / (conversionRate / 100);
-    const requiredBudget = requiredLeads * leadCost;
-    const expectedRevenue = monthlyCustomers * averageDeal;
-    const expectedRoi =
-      requiredBudget > 0
-        ? ((expectedRevenue - requiredBudget) / requiredBudget) * 100
-        : 0;
-
     setResults({
-      budget: formatCurrency(requiredBudget),
-      leads: formatNumber(Math.ceil(requiredLeads)),
-      revenue: formatCurrency(expectedRevenue),
-      roi: formatPercent(expectedRoi),
+      budget: formatCurrency(calculated.monthlyBudget),
+      leads: formatNumber(calculated.requiredLeads),
+      clicks: calculated.requiredClicks
+        ? formatNumber(calculated.requiredClicks)
+        : "",
+      revenue: formatCurrency(calculated.expectedRevenue),
+      roi: formatPercent(calculated.roi),
     });
   };
 
@@ -100,8 +111,12 @@ function HomeCalculator() {
           <form className="home-calculator__form" onSubmit={handleSubmit}>
             <label className="home-calculator__field home-calculator__field--full">
               <span>Choose how you calculate costs:</span>
-              <select defaultValue="cost-per-lead">
-                <option value="cost-per-lead">Cost per Lead</option>
+              <select
+                value={costMethod}
+                onChange={(e) => handleMethodChange(e.target.value)}
+              >
+                <option value={COST_METHODS.LEAD}>Cost per Lead</option>
+                <option value={COST_METHODS.CLICK}>Cost per Click</option>
               </select>
             </label>
 
@@ -112,52 +127,113 @@ function HomeCalculator() {
                   type="number"
                   min="0"
                   value={customers}
-                  onChange={(e) => setCustomers(e.target.value)}
+                  onChange={(e) => {
+                    setCustomers(e.target.value);
+                    resetResults();
+                  }}
                 />
               </label>
 
               <label className="home-calculator__field">
                 <span>Average deal:</span>
-                <span className="home-calculator__input-wrap">
-                  <span className="home-calculator__prefix">€</span>
+                <span className="home-calculator__input-wrap home-calculator__input-wrap--prefix">
+                  <span className="home-calculator__affix home-calculator__affix--prefix">
+                    €
+                  </span>
                   <input
                     type="number"
                     min="0"
                     step="0.01"
                     value={deal}
-                    onChange={(e) => setDeal(e.target.value)}
+                    onChange={(e) => {
+                      setDeal(e.target.value);
+                      resetResults();
+                    }}
                   />
                 </span>
               </label>
 
               <label className="home-calculator__field">
                 <span>Average lead to customer conversion:</span>
-                <span className="home-calculator__input-wrap">
-                  <span className="home-calculator__prefix">%</span>
+                <span className="home-calculator__input-wrap home-calculator__input-wrap--suffix">
                   <input
                     type="number"
                     min="0"
                     max="100"
                     step="0.1"
                     value={conversion}
-                    onChange={(e) => setConversion(e.target.value)}
+                    onChange={(e) => {
+                      setConversion(e.target.value);
+                      resetResults();
+                    }}
                   />
+                  <span className="home-calculator__affix home-calculator__affix--suffix">
+                    %
+                  </span>
                 </span>
               </label>
 
-              <label className="home-calculator__field">
-                <span>Average cost per lead:</span>
-                <span className="home-calculator__input-wrap">
-                  <span className="home-calculator__prefix">€</span>
-                  <input
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    value={costPerLead}
-                    onChange={(e) => setCostPerLead(e.target.value)}
-                  />
-                </span>
-              </label>
+              {isCostPerClick ? (
+                <>
+                  <label className="home-calculator__field">
+                    <span>Click to lead rate:</span>
+                    <span className="home-calculator__input-wrap home-calculator__input-wrap--suffix">
+                      <input
+                        type="number"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                        value={clickConversion}
+                        onChange={(e) => {
+                          setClickConversion(e.target.value);
+                          resetResults();
+                        }}
+                      />
+                      <span className="home-calculator__affix home-calculator__affix--suffix">
+                        %
+                      </span>
+                    </span>
+                  </label>
+
+                  <label className="home-calculator__field">
+                    <span>Average cost per click:</span>
+                    <span className="home-calculator__input-wrap home-calculator__input-wrap--prefix">
+                      <span className="home-calculator__affix home-calculator__affix--prefix">
+                        €
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={averageCPC}
+                        onChange={(e) => {
+                          setAverageCPC(e.target.value);
+                          resetResults();
+                        }}
+                      />
+                    </span>
+                  </label>
+                </>
+              ) : (
+                <label className="home-calculator__field">
+                  <span>Average cost per lead:</span>
+                  <span className="home-calculator__input-wrap home-calculator__input-wrap--prefix">
+                    <span className="home-calculator__affix home-calculator__affix--prefix">
+                      €
+                    </span>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={averageCPL}
+                      onChange={(e) => {
+                        setAverageCPL(e.target.value);
+                        resetResults();
+                      }}
+                    />
+                  </span>
+                </label>
+              )}
             </div>
 
             <button type="submit" className="home-calculator__submit">
@@ -173,7 +249,9 @@ function HomeCalculator() {
             <div className="home-calculator__grid">
               <label className="home-calculator__field">
                 <span>Required Monthly Budget:</span>
-                <output className="home-calculator__output">{results.budget}</output>
+                <output className="home-calculator__output">
+                  {results.budget}
+                </output>
               </label>
 
               <label className="home-calculator__field">
@@ -185,15 +263,26 @@ function HomeCalculator() {
 
               <label className="home-calculator__field">
                 <span>Required Leads</span>
-                <output className="home-calculator__output">{results.leads}</output>
-              </label>
-
-              <label className="home-calculator__field">
-                <span>Expected ROI</span>
                 <output className="home-calculator__output">
-                  {results.roi || "%"}
+                  {results.leads}
                 </output>
               </label>
+
+              {isCostPerClick ? (
+                <label className="home-calculator__field">
+                  <span>Required Clicks</span>
+                  <output className="home-calculator__output">
+                    {results.clicks}
+                  </output>
+                </label>
+              ) : (
+                <label className="home-calculator__field">
+                  <span>Expected ROI</span>
+                  <output className="home-calculator__output">
+                    {results.roi || "%"}
+                  </output>
+                </label>
+              )}
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { RevealWrapper, RevealList } from "next-reveal";
 import Image from "next/image";
 
@@ -22,17 +22,23 @@ function PricingHero() {
         >
           <div className="image-container">
             <Image
-              src={`/images/pricing/hero-coins.webp`}
-              width={693}
-              height={323}
+              src="/images/pricing/hero-coins.webp"
+              width={1386}
+              height={953}
+              alt=""
               style={{
-                animation: `floatAnimation 5s infinite ease-in-out`,
+                animation: "floatAnimation 5s infinite ease-in-out",
                 animationDelay: "0s",
               }}
             />
           </div>
           <div className="image-container">
-            <Image src={"/images/pricing/hero.webp"} width={765} height={470} />
+            <Image
+              src="/images/pricing/hero.webp"
+              width={1532}
+              height={913}
+              alt=""
+            />
           </div>
         </RevealList>
       </div>

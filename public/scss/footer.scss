@@ -1,3 +1,5 @@
+$footer-tablet-breakpoint: 1400px;
+
 footer {
   padding: 150px 0 30px 0;
   background: #0f0f0f;
@@ -14,20 +16,34 @@ footer {
     margin-bottom: 40px;
     border-bottom: 1px solid #2a2a2a;
     min-width: 0;
-    @media (max-width: 1200px) {
-      gap: 32px;
-      flex-wrap: wrap;
+
+    @media (max-width: $footer-tablet-breakpoint) {
+      display: grid;
+      grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      align-items: start;
+      gap: 32px 48px;
     }
+
     @media (max-width: 992px) {
+      display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 40px;
     }
+
     .footer-left {
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
       max-width: 280px;
+
+      @media (max-width: $footer-tablet-breakpoint) {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        max-width: none;
+      }
+
       img {
         width: auto;
         height: auto;
@@ -60,11 +76,17 @@ footer {
       min-width: 0;
       justify-content: center;
       padding-top: 4px;
-      @media (max-width: 1200px) {
-        gap: 80px;
-        flex: 1 1 100%;
+
+      @media (max-width: $footer-tablet-breakpoint) {
+        grid-column: 2;
+        grid-row: 1;
+        flex: unset;
         justify-content: flex-start;
+        gap: 48px;
+        padding-top: 0;
+        width: auto;
       }
+
       @media (max-width: 992px) {
         width: 100%;
         justify-content: flex-start;
@@ -72,10 +94,14 @@ footer {
         padding-bottom: 40px;
         border-bottom: 1px solid #2a2a2a;
       }
+
       &__col {
         display: flex;
         flex-direction: column;
         gap: 50px;
+        @media (max-width: $footer-tablet-breakpoint) {
+          gap: 40px;
+        }
         @media (max-width: 992px) {
           gap: 40px;
         }
@@ -100,11 +126,15 @@ footer {
       max-width: 400px;
       width: 100%;
       margin-left: auto;
-      @media (max-width: 1200px) {
-        flex: 1 1 100%;
-        max-width: 100%;
+
+      @media (max-width: $footer-tablet-breakpoint) {
+        grid-column: 2;
+        grid-row: 2;
+        flex: unset;
+        max-width: none;
         margin-left: 0;
       }
+
       @media (max-width: 992px) {
         margin: 0;
         row-gap: 28px;
@@ -149,10 +179,17 @@ footer {
     justify-content: space-between;
     gap: 24px;
     min-width: 0;
+
+    @media (max-width: $footer-tablet-breakpoint) {
+      flex-wrap: wrap;
+      row-gap: 16px;
+    }
+
     @media (max-width: 992px) {
       flex-direction: column;
       align-items: flex-start;
       gap: 40px;
+      flex-wrap: nowrap;
     }
     p,
     a {
@@ -181,6 +218,13 @@ footer {
     nav {
       display: flex;
       gap: 48px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+
+      @media (max-width: $footer-tablet-breakpoint) {
+        gap: 32px;
+      }
+
       @media (max-width: 992px) {
         width: 100%;
         padding-bottom: 40px;

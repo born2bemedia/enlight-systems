@@ -28,7 +28,7 @@ const SendIcon = () => (
 );
 
 const INITIAL_ANSWERS = Object.fromEntries(
-  PRICING_SETUP_QUESTIONS.map((q) => [q.id, null])
+  PRICING_SETUP_QUESTIONS.map((q) => [q.id, q.multiple ? [] : null])
 );
 
 function PricingSetupFinder() {
@@ -42,20 +42,50 @@ function PricingSetupFinder() {
     [recommendedKey]
   );
 
-  const selectOption = (questionId, optionId) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: optionId }));
+  const isQuestionAnswered = (question) => {
+    const answer = answers[question.id];
+    if (question.multiple) {
+      return Array.isArray(answer) && answer.length > 0;
+    }
+    return Boolean(answer);
+  };
+
+  const isOptionSelected = (question, optionId) => {
+    const answer = answers[question.id];
+    if (question.multiple) {
+      return Array.isArray(answer) && answer.includes(optionId);
+    }
+    return answer === optionId;
+  };
+
+  const selectOption = (question, optionId) => {
+    setAnswers((prev) => {
+      if (question.multiple) {
+        const current = prev[question.id] || [];
+        const next = current.includes(optionId)
+          ? current.filter((id) => id !== optionId)
+          : [...current, optionId];
+        return { ...prev, [question.id]: next };
+      }
+      return { ...prev, [question.id]: optionId };
+    });
     if (error) setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const complete = PRICING_SETUP_QUESTIONS.every((q) => answers[q.id]);
+    const complete = PRICING_SETUP_QUESTIONS.every(isQuestionAnswered);
     if (!complete) {
       setError("Please answer all questions to see your recommendation.");
       return;
     }
+
     const key = getRecommendedPlan(answers);
     const plan = PRICING_RECOMMENDATIONS[key];
+
+    setError("");
+    setRecommendedKey(key);
+    setModalOpen(true);
 
     try {
       await submitForm("/api/pricing-setup", {
@@ -64,13 +94,7 @@ function PricingSetupFinder() {
       });
     } catch (submitError) {
       console.error(submitError);
-      setError("Could not save your answers. Please try again.");
-      return;
     }
-
-    setError("");
-    setRecommendedKey(key);
-    setModalOpen(true);
   };
 
   return (
@@ -109,30 +133,56 @@ function PricingSetupFinder() {
               <h2>Find the right setup</h2>
 
               <div className="pricing-setup__grid">
-                {PRICING_SETUP_QUESTIONS.map((question) => (
-                  <fieldset key={question.id} className="pricing-setup__group">
-                    <legend>{question.label}</legend>
-                    <ul>
-                      {question.options.map((option) => {
-                        const selected = answers[question.id] === option.id;
-                        return (
-                          <li key={option.id}>
-                            <button
-                              type="button"
-                              className={`pricing-setup__box${
-                                selected ? " is-selected" : ""
-                              }`}
-                              aria-pressed={selected}
-                              onClick={() =>
-                                selectOption(question.id, option.id)
-                              }
-                            />
-                            <span>{option.label}</span>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </fieldset>
+                {[0, 2].map((startIndex) => (
+                  <div
+                    key={startIndex}
+                    className="pricing-setup__pair"
+                  >
+                    {PRICING_SETUP_QUESTIONS.slice(
+                      startIndex,
+                      startIndex + 2
+                    ).map((question, columnIndex) => (
+                      <fieldset
+                        key={question.id}
+                        className="pricing-setup__group"
+                      >
+                        <legend
+                          className="pricing-setup__legend"
+                          data-col={columnIndex + 1}
+                        >
+                          {question.label}
+                        </legend>
+                        <ul className="pricing-setup__options">
+                          {question.options.map((option, rowIndex) => {
+                            const selected = isOptionSelected(
+                              question,
+                              option.id
+                            );
+                            return (
+                              <li
+                                key={option.id}
+                                className="pricing-setup__option"
+                                data-col={columnIndex + 1}
+                                data-row={rowIndex + 2}
+                              >
+                                <button
+                                  type="button"
+                                  className={`pricing-setup__box${
+                                    selected ? " is-selected" : ""
+                                  }`}
+                                  aria-pressed={selected}
+                                  onClick={() =>
+                                    selectOption(question, option.id)
+                                  }
+                                />
+                                <span>{option.label}</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </fieldset>
+                    ))}
+                  </div>
                 ))}
               </div>
 

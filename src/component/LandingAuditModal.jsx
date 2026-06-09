@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-const SendIcon = () => (
+const ModalButtonIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -18,53 +16,42 @@ const SendIcon = () => (
   </svg>
 );
 
-function DomainCheckForm({
-  id = "domain-check",
-  className = "",
-  placeholder = "Enter your domain",
-  onSubmit,
-}) {
-  const [domain, setDomain] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+export function LandingAuditModal({ open, url, reportUrl, onClose }) {
+  if (!open) return null;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const value = domain.trim();
-    if (!value || !onSubmit) return;
-
-    setSubmitting(true);
-    try {
-      await onSubmit(value);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  const label = url || "your page";
 
   return (
-    <form
-      className={`home-domain-form ${className}`.trim()}
-      onSubmit={handleSubmit}
-    >
-      <label htmlFor={id}>Check now:</label>
-      <div className="home-domain-form__field">
-        <input
-          id={id}
-          type="text"
-          name="domain"
-          value={domain}
-          onChange={(e) => setDomain(e.target.value)}
-          placeholder={placeholder}
-          autoComplete="off"
-        />
-        <button type="submit" disabled={submitting}>
-          <span>
-            Go
-            <SendIcon />
-          </span>
-        </button>
+    <div className="popup resources-modal">
+      <div className="overlay" onClick={onClose} />
+      <div className="popup-inner resources-modal__inner resources-modal__inner--compact">
+        <div className="resources-modal__checking landing-audit-modal">
+          <h2>Generate your landing page report</h2>
+          <p>
+            We opened <strong>Web Anatomy Landing Page Analyzer</strong> for{" "}
+            <strong>{label}</strong>. Paste the URL there if needed — the full
+            scored audit takes about 2 minutes.
+          </p>
+          {reportUrl && (
+            <a
+              href={reportUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="landing-audit-modal__link"
+            >
+              Open Web Anatomy analyzer
+            </a>
+          )}
+          <div className="resources-modal__footer">
+            <button type="button" className="main-button" onClick={onClose}>
+              <span>
+                Got it!
+                <ModalButtonIcon />
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   );
 }
-
-export default DomainCheckForm;

@@ -1,0 +1,237 @@
+.popup.guide-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+
+  .guide-modal__wrap {
+    position: relative;
+    z-index: 100000;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: min(1034px, 100%);
+    max-width: calc(100% - 32px);
+  }
+
+  .popup-inner.guide-popup {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    min-height: 430px;
+    padding: 64px;
+    border-radius: 0 0 24px 0;
+    align-items: center;
+    justify-content: center;
+
+    .popup-close {
+      display: none;
+    }
+
+    .form-sent {
+      h2 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 120%;
+        margin: 24px 0;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 140%;
+      }
+    }
+  }
+
+  .guide-modal__close {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+
+    svg {
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+
+    &__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--2, #0f0f0f);
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 120%;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--2, #0f0f0f);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 140%;
+    }
+
+    .popup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 437px;
+      max-width: 100%;
+      margin: 0 auto;
+
+      > div {
+        width: 100%;
+        position: relative;
+      }
+
+      input {
+        width: 100%;
+        height: 56px;
+        padding: 0 24px;
+        border: 1px solid rgba(42, 42, 42, 0.1);
+        border-radius: 0;
+        background: rgba(42, 42, 42, 0.1);
+        color: var(--2, #0f0f0f);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 140%;
+
+        &::placeholder {
+          color: rgba(42, 42, 42, 0.5);
+        }
+
+        &.invalid {
+          border-color: #f00;
+        }
+      }
+
+      > div > span {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        color: #f00;
+        font-size: 12px;
+        line-height: 140%;
+      }
+
+      > button {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0 0 24px 0;
+        background: var(--4, #97d80f);
+
+        .main-button {
+          width: 100%;
+          justify-content: center;
+          border: none;
+          border-radius: 0 0 24px 0;
+          background: transparent;
+
+          &:before {
+            display: none;
+          }
+
+          span {
+            gap: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 16px;
+
+    .guide-modal__wrap {
+      width: 100%;
+      max-width: 100%;
+      gap: 8px;
+    }
+
+    .popup-inner.guide-popup {
+      min-height: 0;
+      padding: 40px 24px;
+      border-radius: 0 0 20px 0;
+    }
+
+    .guide-modal__close {
+      width: 32px;
+      height: 32px;
+
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .guide {
+      gap: 32px;
+
+      &__intro {
+        gap: 16px;
+        max-width: 100%;
+      }
+
+      h2 {
+        font-size: 20px;
+
+        br {
+          display: none;
+        }
+      }
+
+      .subtitle {
+        font-size: 14px;
+
+        br {
+          display: none;
+        }
+      }
+
+      .popup-form {
+        gap: 24px;
+        width: 100%;
+
+        > button {
+          border-radius: 0 0 20px 0;
+
+          .main-button {
+            border-radius: 0 0 20px 0;
+            height: 52px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

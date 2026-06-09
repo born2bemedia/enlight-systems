@@ -1,6 +1,7 @@
 import "@/public/scss/home.scss";
 import "@/public/scss/home-stats.scss";
 import "@/public/scss/home-domain-form.scss";
+import "@/public/scss/domain-check-modal.scss";
 import "@/public/scss/home-reputation.scss";
 import "@/public/scss/home-content.scss";
 import "@/public/scss/home-journeys.scss";

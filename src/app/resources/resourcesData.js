@@ -91,13 +91,4 @@ export const RESOURCES_MUST_READ = [
   },
 ];
 
-export const SPAM_CHECK_SOURCES = [
-  { source: "APWG", message: "Not reported for phishing" },
-  { source: "DNSFilter", message: "Not blocked by filter" },
-  { source: "IPQS", message: "No Suspicious Activities found" },
-  { source: "IQ Global", message: "No indications found" },
-  { source: "Maltiverse", message: "Unknown" },
-  { source: "Pulsedive", message: "Unknown" },
-  { source: "Quad9", message: "NO malware reported" },
-  { source: "Scamadviser", message: "Normal trust score" },
-];
+export { SPAM_CHECK_SOURCES } from "@/src/lib/domainCheckData";
