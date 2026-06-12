@@ -22,6 +22,14 @@ function SingleArticleAside({ toc }) {
         }
       }
 
+      const nearBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80;
+
+      if (nearBottom) {
+        current = toc[toc.length - 1].id;
+      }
+
       setActiveId(current);
     };
 
@@ -53,10 +61,12 @@ function SingleArticleAside({ toc }) {
       <nav>
         <ul>
           {toc.map((item) => (
-            <li key={item.id}>
+            <li
+              key={item.id}
+              className={activeId === item.id ? "is-active" : undefined}
+            >
               <Link
                 href={`#${item.id}`}
-                className={activeId === item.id ? "is-active" : undefined}
                 onClick={(event) => handleClick(event, item.id)}
               >
                 {item.label}

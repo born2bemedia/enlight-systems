@@ -695,10 +695,10 @@
 }
 
 .about-stats {
-  margin: 120px 0 180px;
+  margin: 120px 0 40px;
 
   @media (max-width: 992px) {
-    margin: 64px 0 80px;
+    margin: 64px 0 32px;
   }
 
   h2 {
@@ -757,10 +757,10 @@
 }
 
 .about-problem {
-  margin: 0 0 180px;
+  margin: 0 0 120px;
 
   @media (max-width: 992px) {
-    margin: 0 0 80px;
+    margin: 0 0 64px;
   }
 
   &__panel {
@@ -771,13 +771,13 @@
     justify-content: center;
     gap: 24px;
     min-height: 480px;
-    padding: 100px clamp(100px, 14vw, 200px);
+    padding: 72px clamp(100px, 14vw, 200px) 100px;
     text-align: center;
     overflow: hidden;
 
     @media (max-width: 992px) {
       min-height: 0;
-      padding: 72px 16px 64px;
+      padding: 56px 16px 64px;
     }
   }
 
@@ -883,7 +883,7 @@
   margin: 0 0 180px;
 
   @media (max-width: 992px) {
-    margin: 0 0 80px;
+    margin: 0 0 64px;
   }
 
   &:has(+ .about-last) {
