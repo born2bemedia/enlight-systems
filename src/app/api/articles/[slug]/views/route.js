@@ -1,24 +1,15 @@
 import { NextResponse } from "next/server";
+import { isArticleSlug } from "@/src/lib/articleSlugs";
 import {
   getArticleViewCount,
   incrementArticleViewCount,
 } from "@/src/lib/articleViews";
-import { getSlugs } from "@/src/utils/blogUtils";
 
 export const dynamic = "force-dynamic";
 
-let validSlugs = null;
-
-async function isValidSlug(slug) {
-  if (!validSlugs) {
-    validSlugs = new Set(await getSlugs());
-  }
-  return validSlugs.has(slug);
-}
-
 export async function POST(_request, { params: { slug } }) {
   try {
-    if (!(await isValidSlug(slug))) {
+    if (!isArticleSlug(slug)) {
       return NextResponse.json({ message: "Not found" }, { status: 404 });
     }
 
@@ -35,7 +26,7 @@ export async function POST(_request, { params: { slug } }) {
 
 export async function GET(_request, { params: { slug } }) {
   try {
-    if (!(await isValidSlug(slug))) {
+    if (!isArticleSlug(slug)) {
       return NextResponse.json({ message: "Not found" }, { status: 404 });
     }
 

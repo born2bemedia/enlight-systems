@@ -1,9 +1,12 @@
 import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
+const CONTENT_DIR = path.join(process.cwd(), "src/lib/content");
+
 export async function getPost(slug) {
-  const text = await readFile(`./src/lib/content/${slug}.md`, "utf8");
+  const text = await readFile(path.join(CONTENT_DIR, `${slug}.md`), "utf8");
   const {
     content,
     data: {
@@ -35,7 +38,7 @@ export async function getPost(slug) {
 }
 
 export async function getSlugs() {
-  const files = await readdir("./src/lib/content/");
+  const files = await readdir(CONTENT_DIR);
   return files
     .filter((file) => file.endsWith(".md"))
     .map((file) => file.slice(0, -".md".length));
