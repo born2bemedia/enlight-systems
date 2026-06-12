@@ -1,4 +1,5 @@
 import { getPost, getSlugs } from "@/src/utils/blogUtils";
+import articleViewSeeds from "@/data/article-views.json";
 import React from "react";
 import "@/public/scss/resources.scss";
 import Link from "next/link";
@@ -54,7 +55,10 @@ async function SingleArticle({ params: { slug } }) {
                       <span>{post.date}</span>
                     </div>
                   )}
-                  <ArticleViews slug={slug} />
+                  <ArticleViews
+                    slug={slug}
+                    initialViews={articleViewSeeds[slug] ?? 0}
+                  />
                 </div>
               </div>
             </div>
