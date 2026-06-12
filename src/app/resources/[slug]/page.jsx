@@ -1,5 +1,5 @@
 import { getPost, getSlugs } from "@/src/utils/blogUtils";
-import { getArticleViewCount } from "@/src/lib/articleViews";
+import articleViewSeeds from "@/data/article-views.json";
 import React from "react";
 import "@/public/scss/resources.scss";
 import Link from "next/link";
@@ -13,8 +13,6 @@ export async function generateStaticParams() {
   const slugs = await getSlugs();
   return slugs.map((slug) => ({ slug }));
 }
-
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params: { slug } }) {
   const post = await getPost(slug);
@@ -30,10 +28,7 @@ export async function generateMetadata({ params: { slug } }) {
 }
 
 async function SingleArticle({ params: { slug } }) {
-  const [post, viewCount] = await Promise.all([
-    getPost(slug),
-    getArticleViewCount(slug),
-  ]);
+  const post = await getPost(slug);
   const hasToc = post.toc?.length > 0;
 
   return (
@@ -60,7 +55,10 @@ async function SingleArticle({ params: { slug } }) {
                       <span>{post.date}</span>
                     </div>
                   )}
-                  <ArticleViews slug={slug} initialViews={viewCount} />
+                  <ArticleViews
+                    slug={slug}
+                    initialViews={articleViewSeeds[slug] ?? 0}
+                  />
                 </div>
               </div>
             </div>
