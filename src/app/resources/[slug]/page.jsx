@@ -3,6 +3,7 @@ import React from "react";
 import "@/public/scss/resources.scss";
 import Link from "next/link";
 import Image from "next/image";
+import ArticleViews from "../_components/ArticleViews";
 import ChatButton from "../_components/ChatButton";
 import SingleArticleAside from "../_components/SingleArticleAside";
 import SingleArticleFooter from "../_components/SingleArticleFooter";
@@ -40,34 +41,21 @@ async function SingleArticle({ params: { slug } }) {
             <div className="single-post-top__inner">
               <div className="single-post-top__text">
                 <h1>{post.title}</h1>
-                {(post.date || post.views) && (
-                  <div className="single-post-top__meta">
-                    {post.date && (
-                      <div className="single-post-top__meta-row">
-                        <Image
-                          src="/images/resources/icon-calendar-dots.svg"
-                          width={24}
-                          height={24}
-                          alt=""
-                          aria-hidden
-                        />
-                        <span>{post.date}</span>
-                      </div>
-                    )}
-                    {post.views && (
-                      <div className="single-post-top__meta-row">
-                        <Image
-                          src="/images/resources/icon-eye.svg"
-                          width={24}
-                          height={24}
-                          alt=""
-                          aria-hidden
-                        />
-                        <span>{post.views}</span>
-                      </div>
-                    )}
-                  </div>
-                )}
+                <div className="single-post-top__meta">
+                  {post.date && (
+                    <div className="single-post-top__meta-row">
+                      <Image
+                        src="/images/resources/icon-calendar-dots.svg"
+                        width={24}
+                        height={24}
+                        alt=""
+                        aria-hidden
+                      />
+                      <span>{post.date}</span>
+                    </div>
+                  )}
+                  <ArticleViews slug={slug} />
+                </div>
               </div>
             </div>
 
