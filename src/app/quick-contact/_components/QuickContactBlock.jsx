@@ -3,21 +3,32 @@ import ContactForm from "@/src/component/ContactForm";
 import { RevealWrapper } from "next-reveal";
 import { useEffect, useRef, useState } from "react";
 
-const HEADER_OFFSET = 100;
-
 function QuickContactBlock() {
   const [formSent, setFormSent] = useState(false);
   const successRef = useRef(null);
 
   useEffect(() => {
-    if (!formSent || !successRef.current) return;
+    if (!formSent) return undefined;
 
-    const top =
-      successRef.current.getBoundingClientRect().top +
-      window.scrollY -
-      HEADER_OFFSET;
+    const centerSuccessMessage = () => {
+      const element = successRef.current;
+      if (!element) return;
 
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      const rect = element.getBoundingClientRect();
+      const targetTop =
+        window.scrollY + rect.top - (window.innerHeight - rect.height) / 2;
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+    };
+
+    const frame = requestAnimationFrame(() => {
+      requestAnimationFrame(centerSuccessMessage);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, [formSent]);
 
   const handleFormReset = () => {
@@ -37,7 +48,11 @@ function QuickContactBlock() {
               we&apos;ll help you identify gaps and the right solution.
             </h3>
           </RevealWrapper>
-          <div className="contact-block__body">
+          <div
+            className={`contact-block__body${
+              formSent ? " contact-block__body--success" : ""
+            }`}
+          >
             {!formSent ? (
               <ContactForm
                 variant="quick"

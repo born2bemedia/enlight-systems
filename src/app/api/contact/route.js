@@ -17,12 +17,6 @@ export async function POST(request) {
       });
     }
 
-    await sendMail({
-      subject: "Crypto marketing assistance request",
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessanger: ${messanger}\nNeed assistance with: ${assistance}\nProblem: ${problem}\nReply: ${reply}\n`,
-      attachments,
-    });
-
     const htmlEmail = `
   <html>
     <body>
@@ -68,17 +62,31 @@ export async function POST(request) {
   </html>
   `;
 
-    await sendMail({
-      to: email,
-      subject: "Your Request Has Been Received",
-      html: htmlEmail,
-    });
+    try {
+      await sendMail({
+        subject: "Crypto marketing assistance request",
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessanger: ${messanger}\nNeed assistance with: ${assistance}\nProblem: ${problem}\nReply: ${reply}\n`,
+        attachments,
+      });
+    } catch (mailError) {
+      console.error("Quick contact internal mail failed:", mailError);
+    }
 
-    return NextResponse.json({ message: "Success: email was sent" });
+    try {
+      await sendMail({
+        to: email,
+        subject: "Your Request Has Been Received",
+        html: htmlEmail,
+      });
+    } catch (confirmationError) {
+      console.error("Quick contact confirmation mail failed:", confirmationError);
+    }
+
+    return NextResponse.json({ message: "Success" });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { message: "COULD NOT SEND MESSAGE" },
+      { message: "COULD NOT PROCESS REQUEST" },
       { status: 500 }
     );
   }

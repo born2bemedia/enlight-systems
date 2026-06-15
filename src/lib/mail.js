@@ -1,12 +1,17 @@
 import nodemailer from "nodemailer";
 
-export const SMTP_USER =
-  process.env.SMTP_USER || "noreply@enlight.systems";
-export const SMTP_PASS = process.env.SMTP_PASS || "jem5uqk_RMZ@muk!udv";
-export const MAIL_TO = process.env.MAIL_TO || "noreply@enlight.systems";
-export const MAIL_FROM = `"Enlight Systems" <${SMTP_USER}>`;
+export const SMTP_USER = process.env.SMTP_USER || "";
+export const SMTP_PASS = process.env.SMTP_PASS || "";
+export const MAIL_TO = process.env.MAIL_TO || SMTP_USER || "info@enlight.business";
+export const MAIL_FROM = SMTP_USER
+  ? `"Enlight Systems" <${SMTP_USER}>`
+  : '"Enlight Systems" <noreply@enlight.systems>';
 
 export function createTransporter() {
+  if (!SMTP_USER || !SMTP_PASS) {
+    throw new Error("SMTP credentials are not configured");
+  }
+
   return nodemailer.createTransport({
     service: "gmail",
     auth: {

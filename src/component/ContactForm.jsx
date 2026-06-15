@@ -7,6 +7,7 @@ import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
 import Link from "next/link";
 import axios from "axios";
+import { submitForm } from "@/src/utils/submitForm";
 
 const ValidationSchema = Yup.object().shape({
   assistance: Yup.string().required("This field is required."),
@@ -62,22 +63,18 @@ const assistanceOptions = [
   { value: "Other", label: "Other" },
 ];
 
-const handleSubmit = async (
-  values,
-  { setSubmitting, resetForm, setStatus }
-) => {
+async function buildContactPayload(values) {
   let fileData = null;
 
-  // Check if there's a file and read it as base64
   if (values.file) {
     fileData = await new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => {
         const base64EncodedData = reader.result;
         resolve({
-          base64: base64EncodedData.split(";base64,").pop(), // Get only the base64 part
-          filename: values.file.name, // Get the filename
-          mimetype: values.file.type, // Get the MIME type
+          base64: base64EncodedData.split(";base64,").pop(),
+          filename: values.file.name,
+          mimetype: values.file.type,
         });
       };
       reader.onerror = (error) => reject(error);
@@ -85,36 +82,11 @@ const handleSubmit = async (
     });
   }
 
-  const payload = {
+  return {
     ...values,
     file: fileData,
   };
-
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-    console.log(JSON.stringify(payload));
-    if (response.ok) {
-      resetForm();
-      setStatus({ success: true });
-      setSubmitting(false);
-      return true;
-    }
-
-    setStatus({ success: false });
-    setSubmitting(false);
-    return false;
-  } catch (error) {
-    console.error(error);
-    setSubmitting(false);
-    return false;
-  }
-};
+}
 
 function ContactForm({
   handleFormReset,
@@ -158,13 +130,29 @@ function ContactForm({
           messanger: false,
         }}
         validationSchema={ValidationSchema}
-        onSubmit={async (values, formikHelpers) => {
-          const success = await handleSubmit(values, formikHelpers);
+        onSubmit={async (values, { setSubmitting, resetForm, setStatus }) => {
+          setSubmitting(true);
 
-          if (success && handleFormReset) {
-            setTimeout(() => {
-              handleFormReset(true);
-            }, 400);
+          try {
+            const payload = await buildContactPayload(values);
+
+            if (isQuick && handleFormReset) {
+              handleFormReset();
+              setSubmitting(false);
+              submitForm("/api/contact", payload).catch((error) => {
+                console.error(error);
+              });
+              return;
+            }
+
+            await submitForm("/api/contact", payload);
+            resetForm();
+            setStatus({ success: true });
+          } catch (error) {
+            console.error(error);
+            setStatus({ success: false });
+          } finally {
+            setSubmitting(false);
           }
         }}
       >
