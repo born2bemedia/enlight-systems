@@ -1,13 +1,32 @@
 "use client";
 import ContactForm from "@/src/component/ContactForm";
-import { RevealWrapper, RevealList } from "next-reveal";
-import { useState } from "react";
+import { RevealWrapper } from "next-reveal";
+import { useLayoutEffect, useRef, useState } from "react";
 
 function QuickContactBlock() {
   const [formSent, setFormSent] = useState(false);
+  const successRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!formSent || !successRef.current) return undefined;
+
+    const scrollToSuccess = () => {
+      successRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    };
+
+    scrollToSuccess();
+    const timers = [100, 450].map((delay) =>
+      window.setTimeout(scrollToSuccess, delay)
+    );
+
+    return () => timers.forEach(clearTimeout);
+  }, [formSent]);
 
   const handleFormReset = () => {
-    setFormSent(!formSent);
+    setFormSent(true);
   };
 
   return (
@@ -23,14 +42,18 @@ function QuickContactBlock() {
               we&apos;ll help you identify gaps and the right solution.
             </h3>
           </RevealWrapper>
-          <div className="contact-block__body">
+          <div
+            className={`contact-block__body${
+              formSent ? " contact-block__body--sent" : ""
+            }`}
+          >
             {!formSent ? (
               <ContactForm
                 variant="quick"
                 handleFormReset={() => handleFormReset()}
               />
             ) : (
-              <div className="form-sent">
+              <div className="form-sent" ref={successRef} tabIndex={-1}>
                 <svg
                   width="54"
                   height="54"

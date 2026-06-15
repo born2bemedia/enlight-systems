@@ -1,6 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { SPAM_CHECK_SOURCES } from "@/src/lib/domainCheckData";
+import { useBodyScrollLock } from "@/src/hooks/useBodyScrollLock";
+
+function ModalPortal({ children, open }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!open || !mounted) return null;
+
+  return createPortal(children, document.body);
+}
 
 const ModalCheckIcon = ({ size = 51 }) => (
   <svg
@@ -48,27 +63,31 @@ function ModalGotItButton({ onClick }) {
 }
 
 export function DomainCheckingModal({ open, onClose, loading = false }) {
+  useBodyScrollLock(open);
+
   if (!open) return null;
 
   return (
-    <div className="popup resources-modal">
-      <div className="overlay" onClick={loading ? undefined : onClose} />
-      <div className="popup-inner resources-modal__inner resources-modal__inner--compact">
-        <div className="resources-modal__checking">
-          <div className="resources-modal__icon">
-            <ModalCheckIcon />
+    <ModalPortal open={open}>
+      <div className="popup resources-modal">
+        <div className="overlay" onClick={loading ? undefined : onClose} />
+        <div className="popup-inner resources-modal__inner resources-modal__inner--compact">
+          <div className="resources-modal__checking">
+            <div className="resources-modal__icon">
+              <ModalCheckIcon />
+            </div>
+            <h2>Your domain is being checked.</h2>
+            <p>Please wait for the results!</p>
+            {loading && (
+              <p className="resources-modal__checking-note">
+                New domains may take up to 25 seconds.
+              </p>
+            )}
+            {!loading && <ModalGotItButton onClick={onClose} />}
           </div>
-          <h2>Your domain is being checked.</h2>
-          <p>Please wait for the results!</p>
-          {loading && (
-            <p className="resources-modal__checking-note">
-              New domains may take up to 25 seconds.
-            </p>
-          )}
-          {!loading && <ModalGotItButton onClick={onClose} />}
         </div>
       </div>
-    </div>
+    </ModalPortal>
   );
 }
 
@@ -80,6 +99,8 @@ export function DomainSpamModal({
   status = "safe",
   statusLabel,
 }) {
+  useBodyScrollLock(open);
+
   if (!open) return null;
 
   const label = domain || "your-domain.com";
@@ -88,35 +109,39 @@ export function DomainSpamModal({
     (status === "unsafe" ? "RISK" : status === "warning" ? "CAUTION" : "SAFE!");
 
   return (
-    <div className="popup resources-modal">
-      <div className="overlay" onClick={onClose} />
-      <div className="popup-inner resources-modal__inner resources-modal__inner--spam">
-        <div className="resources-spam-modal">
-          <h2>{label} Spam and Scam Analysis</h2>
+    <ModalPortal open={open}>
+      <div className="popup resources-modal">
+        <div className="overlay" onClick={onClose} />
+        <div className="popup-inner resources-modal__inner resources-modal__inner--spam">
+          <div className="resources-spam-modal">
+            <h2>{label} Spam and Scam Analysis</h2>
 
-          <div
-            className={`resources-spam-modal__status resources-spam-modal__status--${status}`}
-          >
-            <ModalCheckIcon />
-            <span>{resolvedStatusLabel}</span>
+            <div
+              className={`resources-spam-modal__status resources-spam-modal__status--${status}`}
+            >
+              <ModalCheckIcon />
+              <span>{resolvedStatusLabel}</span>
+            </div>
+
+            <p className="resources-spam-modal__lead">Based on the following sources:</p>
+            <div className="resources-spam-modal__scroll">
+              <ul className="resources-spam-modal__list">
+                {sources.map((item) => (
+                  <li key={item.source}>
+                    <span className="resources-spam-modal__list-icon">
+                      <ModalCheckIcon size={24} />
+                    </span>
+                    <p>
+                      <strong>{item.source}:</strong> {item.message}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ModalGotItButton onClick={onClose} />
           </div>
-
-          <p className="resources-spam-modal__lead">Based on the following sources:</p>
-          <ul className="resources-spam-modal__list">
-            {sources.map((item) => (
-              <li key={item.source}>
-                <span className="resources-spam-modal__list-icon">
-                  <ModalCheckIcon size={24} />
-                </span>
-                <p>
-                  <strong>{item.source}:</strong> {item.message}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <ModalGotItButton onClick={onClose} />
         </div>
       </div>
-    </div>
+    </ModalPortal>
   );
 }

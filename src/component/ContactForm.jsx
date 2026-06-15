@@ -19,12 +19,18 @@ const ValidationSchema = Yup.object().shape({
   phone: Yup.string()
     .required("This field is required.")
     .test("is-valid-phone", "Please provide a valid phone number.", (value) => {
-      // Implement a more robust check for phone numbers here if necessary
-      return /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im.test(
-        value
-      );
+      if (!value) return false;
+      const digits = value.replace(/\D/g, "");
+      return digits.length >= 8 && digits.length <= 15;
     }),
-  reply: Yup.string().email("Please provide a valid email address."),
+  reply: Yup.string().test(
+    "email-if-filled",
+    "Please provide a valid email address.",
+    (value) => {
+      if (!value || !value.trim()) return true;
+      return Yup.string().email().isValidSync(value.trim());
+    }
+  ),
 });
 
 import {
@@ -97,11 +103,16 @@ const handleSubmit = async (
       resetForm();
       setStatus({ success: true });
       setSubmitting(false);
-    } else {
-      setStatus({ success: false });
+      return true;
     }
+
+    setStatus({ success: false });
+    setSubmitting(false);
+    return false;
   } catch (error) {
     console.error(error);
+    setSubmitting(false);
+    return false;
   }
 };
 
@@ -147,11 +158,14 @@ function ContactForm({
           messanger: false,
         }}
         validationSchema={ValidationSchema}
-        onSubmit={(values, { setSubmitting, resetForm, setStatus }) => {
-          handleSubmit(values, { setSubmitting, resetForm, setStatus });
-          setTimeout(() => {
-            handleFormReset(true);
-          }, 400);
+        onSubmit={async (values, formikHelpers) => {
+          const success = await handleSubmit(values, formikHelpers);
+
+          if (success && handleFormReset) {
+            setTimeout(() => {
+              handleFormReset(true);
+            }, 400);
+          }
         }}
       >
         {({
@@ -162,6 +176,7 @@ function ContactForm({
           values,
           setFieldTouched,
           handleChange,
+          status,
         }) => (
           <>
             <Form
@@ -377,10 +392,18 @@ function ContactForm({
                 </div>
               </div>
 
+              {status?.success === false && (
+                <p className="contact-form__submit-error" role="alert">
+                  Something went wrong while sending your request. Please try
+                  again or email{" "}
+                  <a href="mailto:info@enlight.business">info@enlight.business</a>.
+                </p>
+              )}
+
               <button type="submit" disabled={isSubmitting}>
                 <span className="main-button">
                   <span>
-                    Send quick request
+                    {isSubmitting ? "Sending..." : "Send quick request"}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

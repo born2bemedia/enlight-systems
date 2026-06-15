@@ -7,7 +7,10 @@ export async function POST(request) {
     const { email } = bodyJSON;
 
     if (!email?.trim()) {
-      return NextResponse.status(400).json({ message: "Email is required" });
+      return NextResponse.json(
+        { message: "Email is required" },
+        { status: 400 }
+      );
     }
 
     await sendMail({
@@ -18,6 +21,9 @@ export async function POST(request) {
     return NextResponse.json({ message: "Success: email was sent" });
   } catch (error) {
     console.error(error);
-    return NextResponse.status(500).json({ message: "COULD NOT SEND MESSAGE" });
+    return NextResponse.json(
+      { message: "COULD NOT SEND MESSAGE" },
+      { status: 500 }
+    );
   }
 }

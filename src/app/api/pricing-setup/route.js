@@ -25,6 +25,9 @@ export async function POST(request) {
     return NextResponse.json({ message: "Success" });
   } catch (error) {
     console.error(error);
-    return NextResponse.status(500).json({ message: "COULD NOT PROCESS REQUEST" });
+    return NextResponse.json(
+      { message: "COULD NOT PROCESS REQUEST" },
+      { status: 500 }
+    );
   }
 }
