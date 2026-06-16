@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import {
+  redisDel,
   redisGet,
   redisSadd,
   redisSet,
@@ -116,5 +117,18 @@ export async function markArticleNotified(slug) {
 
   const notified = await readLocalNotified();
   notified[slug] = true;
+  await writeLocalNotified(notified);
+}
+
+export async function clearArticleNotified(slug) {
+  if (!slug) return;
+
+  if (useRedis()) {
+    await redisDel(notifiedKey(slug));
+    return;
+  }
+
+  const notified = await readLocalNotified();
+  delete notified[slug];
   await writeLocalNotified(notified);
 }

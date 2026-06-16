@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  clearArticleNotified,
   getArticleSubscribers,
   isArticleNotified,
   markArticleNotified,
@@ -41,7 +42,11 @@ export async function POST(request) {
       return NextResponse.json({ message: "Invalid article slug" }, { status: 400 });
     }
 
-    if (await isArticleNotified(slug)) {
+    const force = Boolean(body.force);
+
+    if (force) {
+      await clearArticleNotified(slug);
+    } else if (await isArticleNotified(slug)) {
       return NextResponse.json(
         { message: "Notifications were already sent for this article" },
         { status: 409 }

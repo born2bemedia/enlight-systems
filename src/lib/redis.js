@@ -43,6 +43,10 @@ export async function redisSet(key, value) {
   return redisRequest(`/set/${encodeURIComponent(key)}/${encodeURIComponent(value)}`);
 }
 
+export async function redisDel(key) {
+  return redisRequest(`/del/${encodeURIComponent(key)}`);
+}
+
 export async function redisSadd(key, member) {
   return redisRequest(
     `/sadd/${encodeURIComponent(key)}/${encodeURIComponent(member)}`
