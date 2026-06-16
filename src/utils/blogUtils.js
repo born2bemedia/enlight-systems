@@ -43,3 +43,27 @@ export async function getSlugs() {
     .filter((file) => file.endsWith(".md"))
     .map((file) => file.slice(0, -".md".length));
 }
+
+async function getPostMeta(slug) {
+  const text = await readFile(path.join(CONTENT_DIR, `${slug}.md`), "utf8");
+  const { data } = matter(text);
+
+  return {
+    slug,
+    title: data.title || slug,
+    image: data.list_image || data.image || "",
+    publishedAt: data.published_at || data.date || "",
+    isNew: Boolean(data.new),
+  };
+}
+
+export async function getNewArticles(limit = 2) {
+  const slugs = await getSlugs();
+  const posts = await Promise.all(slugs.map((slug) => getPostMeta(slug)));
+
+  return posts
+    .filter((post) => post.isNew)
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .slice(0, limit)
+    .map(({ title, image, slug }) => ({ title, image, slug }));
+}

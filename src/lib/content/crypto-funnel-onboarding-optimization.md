@@ -4,6 +4,9 @@ image: "article-hero-coins.png"
 seo_title: "Crypto Funnel & Onboarding Optimization | Enlight"
 seo_description: "Learn why crypto onboarding drop-off hurts ROI and how to optimize funnels for trust, activation, and retention with Enlight."
 date: "10 April 2026"
+published_at: "2026-04-10"
+new: true
+list_image: "article-new-funnel.png"
 views: "[views]"
 toc:
   - id: why-acquisition

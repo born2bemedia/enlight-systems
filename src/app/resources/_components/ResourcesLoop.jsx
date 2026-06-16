@@ -38,7 +38,7 @@ const ReadMoreIcon = () => (
   </svg>
 );
 
-function ResourcesLoop() {
+function ResourcesLoop({ newArticles = RESOURCES_NEW }) {
   const spamCheck = useDomainCheckFlow({
     source: "Resources",
     toolType: "domain-spam-scam-check",
@@ -109,9 +109,9 @@ function ResourcesLoop() {
             />
 
             <h3>New articles</h3>
-            {RESOURCES_NEW.map((item) => (
+            {newArticles.map((item) => (
               <ResourceCard
-                key={item.title}
+                key={item.slug}
                 className="half cover"
                 title={item.title}
                 image={item.image}

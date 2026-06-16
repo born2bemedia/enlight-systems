@@ -7,10 +7,12 @@
     "dev:clean": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "notify-article": "node scripts/notify-article.js"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.3",
+    "@sendgrid/mail": "^8.1.6",
     "@upstash/redis": "^1.38.0",
     "axios": "^1.6.8",
     "formik": "^2.4.5",

@@ -8,6 +8,7 @@ import ResourcesStats from "./_components/ResourcesStats";
 import ResourcesIntro from "./_components/ResourcesIntro";
 import ResourcesLoop from "./_components/ResourcesLoop";
 import ResourcesAssistance from "./_components/ResourcesAssistance";
+import { getNewArticles } from "@/src/utils/blogUtils";
 
 export const metadata = {
   title: "Crypto Marketing Resources",
@@ -19,13 +20,15 @@ export const metadata = {
   },
 };
 
-function ResourcesPage() {
+async function ResourcesPage() {
+  const newArticles = await getNewArticles();
+
   return (
     <>
       <ResourcesHero />
       <ResourcesStats />
       <ResourcesIntro />
-      <ResourcesLoop />
+      <ResourcesLoop newArticles={newArticles} />
       <ResourcesAssistance />
     </>
   );

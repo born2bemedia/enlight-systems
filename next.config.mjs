@@ -5,6 +5,9 @@ const nextConfig = {
       "/api/articles/[slug]/views": [
         "./data/article-views.json",
       ],
+      "/api/send-emails": [
+        "./src/lib/content/**/*",
+      ],
     },
   },
 };
