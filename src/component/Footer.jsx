@@ -60,7 +60,7 @@ function Footer() {
           </nav>
 
           <div className="footer-contacts">
-            <Link href="mailto:info@enlight.business">
+            <Link href="mailto:info@enlight.systems">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -90,7 +90,7 @@ function Footer() {
                   </clipPath>
                 </defs>
               </svg>
-              <span>info@enlight.business</span>
+              <span>info@enlight.systems</span>
             </Link>
             <Link href="tel:+447458149408">
               <svg
