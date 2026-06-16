@@ -56,9 +56,9 @@ export const RESOURCES_POPULAR = [
 
 export const RESOURCES_NEW = [
   {
-    title: "Crypto Funnel & Onboarding Optimization",
-    image: "article-new-funnel.png",
-    slug: "crypto-funnel-onboarding-optimization",
+    title: "Marketing Automation for Crypto Projects",
+    image: "article-new-automation.png",
+    slug: "marketing-automation-for-crypto-projects",
   },
   {
     title: "Trust & Reputation in Crypto Marketing",
@@ -68,10 +68,6 @@ export const RESOURCES_NEW = [
 ];
 
 export const RESOURCES_COMING_SOON = [
-  {
-    title: "Guide: Marketing Automation for Crypto Projects",
-    image: "article-soon-automation.png",
-  },
   {
     title: "Cross-Channel Attribution & Marketing Visibility in Crypto",
     image: "article-soon-attribution.png",

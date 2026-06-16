@@ -1,4 +1,5 @@
 export const ARTICLE_SLUGS = [
+  "marketing-automation-for-crypto-projects",
   "10-reasons-for-low-roi-in-crypto-marketing-common-pitfalls-to-avoid",
   "agile-budgeting-in-crypto-marketing-maximising-roi",
   "crypto-funnel-onboarding-optimization",
