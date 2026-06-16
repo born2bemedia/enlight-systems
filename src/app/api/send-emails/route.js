@@ -50,7 +50,6 @@ export async function POST(request) {
 
     const post = await getPost(slug);
     const title = body.title?.trim() || post.title;
-    const excerpt = body.excerpt?.trim() || post.seo_description || "";
 
     const subscribers = await getArticleSubscribers();
     if (!subscribers.length) {
@@ -64,7 +63,6 @@ export async function POST(request) {
 
     const { subject, text, html } = buildArticleNotifyEmail({
       title,
-      excerpt,
       slug,
     });
 
