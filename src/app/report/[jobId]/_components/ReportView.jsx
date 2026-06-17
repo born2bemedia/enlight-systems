@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { useSiteReportPolling } from "@/src/hooks/useSiteReportPolling";
 import ReportLoader from "@/src/component/ReportLoader";
+import ReportHero from "@/src/component/ReportHero";
+import HomeCalculatorCta from "@/src/component/home/HomeCalculatorCta";
 
 const PROGRESS_MESSAGES = [
   "Capturing desktop and mobile screenshots…",
@@ -99,10 +101,12 @@ function ReportView({ jobId }) {
   };
 
   return (
-    <section className="report-page">
-      <div className="_container">
-        <div className="report-page__top">
-          <BackLink />
+    <>
+      <ReportHero domain={report?.domain || report?.url} />
+      <section className="report-page">
+        <div className="_container">
+          <div className="report-page__top">
+            <BackLink />
           {status === "done" && report && (
             <button
               type="button"
@@ -110,7 +114,7 @@ function ReportView({ jobId }) {
               onClick={handleDownloadPdf}
               disabled={generating}
             >
-              <span>{generating ? "Generating…" : "Download PDF"}</span>
+              <span>{generating ? "Generating…" : "Download report"}</span>
             </button>
           )}
         </div>
@@ -258,8 +262,15 @@ function ReportView({ jobId }) {
             </div>
           </>
         )}
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <HomeCalculatorCta
+        showBadge={false}
+        lead="Use Enlight to see where users are lost, where budgets are wasted, and where performance can be improved from one dashboard."
+        title="Website issues are often symptoms of deeper marketing problems"
+      />
+    </>
   );
 }
 

@@ -1,4 +1,6 @@
+import "@/public/scss/platform.scss";
 import "@/public/scss/report.scss";
+import "@/public/scss/home-calculator-cta.scss";
 import ReportView from "./_components/ReportView";
 
 export const metadata = {
