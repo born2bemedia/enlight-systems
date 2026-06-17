@@ -256,9 +256,6 @@ function ReportView({ jobId }) {
             </div>
 
             <div className="report-page__actions">
-              <Link href="/#domain-check-content" className="report-page__back">
-                Analyze another page →
-              </Link>
             </div>
           </>
         )}
