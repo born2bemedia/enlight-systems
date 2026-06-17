@@ -124,12 +124,7 @@ function TrustReportView({ domain }) {
             )}
 
             <div className="report-page__actions">
-              <Link
-                href="/#domain-check-reputation"
-                className="report-page__back"
-              >
-                Check another domain →
-              </Link>
+
             </div>
           </>
         )}
