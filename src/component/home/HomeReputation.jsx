@@ -1,61 +1,53 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import DomainCheckForm from "./DomainCheckForm";
-import {
-  DomainCheckingModal,
-  DomainSpamModal,
-} from "@/src/component/DomainCheckModals";
-import { useDomainCheckFlow } from "@/src/hooks/useDomainCheckFlow";
+import { formatDomainLabel } from "@/src/lib/domainCheckData";
 
 function HomeReputation() {
-  const {
-    checkedDomain,
-    checkingOpen,
-    spamOpen,
-    checkResults,
-    handleDomainCheck,
-    handleCheckingClose,
-    closeSpam,
-  } = useDomainCheckFlow({
-    source: "Home — Reputation",
-    toolType: "domain-reputation",
-    showSpamResult: true,
-  });
+  const router = useRouter();
+  const [error, setError] = useState(null);
+
+  const handleDomainCheck = (input) => {
+    const domain = formatDomainLabel(input);
+
+    if (!domain) {
+      setError("Enter a valid domain, e.g. example.com");
+      return;
+    }
+
+    setError(null);
+    router.push(`/trust-report?domain=${encodeURIComponent(domain)}`);
+  };
 
   return (
-    <>
-      <section className="home-reputation">
-        <div className="_container">
-          <div className="home-domain-panel">
-            <div className="home-reputation__content">
-              <h2>Reputation matters</h2>
-              <p className="home-domain-panel__text">
-                If your domain is flagged as spam or scam, users abandon
-                registration, ad performance drops, and acquisition costs increase.
-              </p>
-            </div>
-            <DomainCheckForm
-              id="domain-check-reputation"
-              onSubmit={handleDomainCheck}
-            />
+    <section className="home-reputation">
+      <div className="_container">
+        <div className="home-domain-panel">
+          <div className="home-reputation__content">
+            <h2>Reputation matters</h2>
+            <p className="home-domain-panel__text">
+              If your domain is flagged as spam or scam, users abandon
+              registration, ad performance drops, and acquisition costs increase.
+            </p>
           </div>
+          <DomainCheckForm
+            id="domain-check-reputation"
+            onSubmit={handleDomainCheck}
+          />
         </div>
-      </section>
 
-      <DomainCheckingModal
-        open={checkingOpen}
-        loading={checkingOpen}
-        onClose={handleCheckingClose}
-      />
-      <DomainSpamModal
-        open={spamOpen}
-        domain={checkResults?.domain || checkedDomain}
-        sources={checkResults?.sources}
-        status={checkResults?.status}
-        statusLabel={checkResults?.statusLabel}
-        onClose={closeSpam}
-      />
-    </>
+        {error && (
+          <div
+            className="home-reputation__status home-reputation__status--error"
+            role="alert"
+          >
+            <p>{error}</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
