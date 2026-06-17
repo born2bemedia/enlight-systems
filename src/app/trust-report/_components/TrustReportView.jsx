@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTrustCheck } from "@/src/hooks/useTrustCheck";
 import ReportLoader from "@/src/component/ReportLoader";
 import ReportHero from "@/src/component/ReportHero";
-import HomeCalculatorCta from "@/src/component/home/HomeCalculatorCta";
+import ReportCta from "@/src/component/ReportCta";
 
 const RISK_LABELS = {
   low: "Low risk",
@@ -131,11 +131,7 @@ function TrustReportView({ domain }) {
         </div>
       </section>
 
-      <HomeCalculatorCta
-        showBadge={false}
-        lead="Use Enlight to see where users are lost, where budgets are wasted, and where performance can be improved from one dashboard."
-        title="Website issues are often symptoms of deeper marketing problems"
-      />
+      <ReportCta />
     </>
   );
 }

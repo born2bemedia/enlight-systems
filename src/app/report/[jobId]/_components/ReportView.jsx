@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useSiteReportPolling } from "@/src/hooks/useSiteReportPolling";
 import ReportLoader from "@/src/component/ReportLoader";
 import ReportHero from "@/src/component/ReportHero";
-import HomeCalculatorCta from "@/src/component/home/HomeCalculatorCta";
+import ReportScreenshot from "@/src/component/ReportScreenshot";
+import ReportCta from "@/src/component/ReportCta";
 
 const PROGRESS_MESSAGES = [
   "Capturing desktop and mobile screenshots…",
@@ -214,44 +215,52 @@ function ReportView({ jobId }) {
                 {report.desktop_screenshot_url && (
                   <figure>
                     <figcaption>Desktop</figcaption>
-                    <div className="report-page__shot-frame">
-                      <div className="report-page__shot-canvas">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={report.desktop_screenshot_url}
-                          alt={`Desktop preview of ${report.domain || report.url}`}
-                          loading="lazy"
-                        />
-                        {Array.isArray(report.markers) &&
-                          report.markers.map((marker) => (
-                            <span
-                              key={marker.index}
-                              className="report-page__shot-marker"
-                              style={{ top: `${marker.top_percent}%` }}
-                              title={marker.section_label}
-                            >
-                              {marker.index}
-                            </span>
-                          ))}
-                      </div>
-                    </div>
+                    <ReportScreenshot
+                      src={report.desktop_screenshot_url}
+                      alt={`Desktop preview of ${report.domain || report.url}`}
+                      markers={report.markers}
+                    />
                   </figure>
                 )}
                 {report.mobile_screenshot_url && (
                   <figure>
                     <figcaption>Mobile</figcaption>
-                    <div className="report-page__shot-frame">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={report.mobile_screenshot_url}
-                        alt={`Mobile preview of ${report.domain || report.url}`}
-                        loading="lazy"
-                      />
-                    </div>
+                    <ReportScreenshot
+                      src={report.mobile_screenshot_url}
+                      alt={`Mobile preview of ${report.domain || report.url}`}
+                    />
                   </figure>
                 )}
               </div>
             )}
+
+            {Array.isArray(report.technical_seo) &&
+              report.technical_seo.length > 0 && (
+                <div className="report-page__seo">
+                  <h2 className="report-page__seo-title">Technical SEO</h2>
+                  <div className="report-page__seo-list">
+                    {report.technical_seo.map((item, i) => (
+                      <div key={i} className="report-page__seo-item">
+                        <div className="report-page__seo-head">
+                          <span className="report-page__seo-issue">
+                            {item.issue}
+                          </span>
+                          {item.priority && (
+                            <span
+                              className={`report-page__seo-priority report-page__seo-priority--${item.priority}`}
+                            >
+                              {item.priority}
+                            </span>
+                          )}
+                        </div>
+                        {item.fix && (
+                          <p className="report-page__seo-fix">{item.fix}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
             </div>
 
@@ -262,11 +271,7 @@ function ReportView({ jobId }) {
         </div>
       </section>
 
-      <HomeCalculatorCta
-        showBadge={false}
-        lead="Use Enlight to see where users are lost, where budgets are wasted, and where performance can be improved from one dashboard."
-        title="Website issues are often symptoms of deeper marketing problems"
-      />
+      <ReportCta />
     </>
   );
 }
