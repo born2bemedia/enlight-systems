@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useTrustCheck } from "@/src/hooks/useTrustCheck";
 import ReportLoader from "@/src/component/ReportLoader";
+import ReportHero from "@/src/component/ReportHero";
+import HomeCalculatorCta from "@/src/component/home/HomeCalculatorCta";
 
 const RISK_LABELS = {
   low: "Low risk",
@@ -36,13 +38,15 @@ function TrustReportView({ domain }) {
   const noDomain = !domain;
 
   return (
-    <section className="report-page">
-      <div className="_container">
-        <div className="report-page__top">
-          <Link href="/" className="report-page__back">
-            ← Back to home
-          </Link>
-        </div>
+    <>
+      <ReportHero title="Domain Trust Report" domain={domain} />
+      <section className="report-page">
+        <div className="_container">
+          <div className="report-page__top">
+            <Link href="/" className="report-page__back">
+              ← Back to home
+            </Link>
+          </div>
 
         {(status === "idle" || status === "loading") && !noDomain && (
           <ReportLoader
@@ -129,8 +133,15 @@ function TrustReportView({ domain }) {
             </div>
           </>
         )}
-      </div>
-    </section>
+        </div>
+      </section>
+
+      <HomeCalculatorCta
+        showBadge={false}
+        lead="Use Enlight to see where users are lost, where budgets are wasted, and where performance can be improved from one dashboard."
+        title="Website issues are often symptoms of deeper marketing problems"
+      />
+    </>
   );
 }
 

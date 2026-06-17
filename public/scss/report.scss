@@ -6,11 +6,27 @@ $brandGradient: linear-gradient(
   #acd64e 91.73%
 );
 
-.report-page {
-  padding: 140px 0 120px;
+.report-hero.platform-hero {
+  margin: 0 0 48px;
 
   @media (max-width: 992px) {
-    padding: 110px 0 80px;
+    margin: 0 0 32px;
+  }
+
+  .platform-hero__panel {
+    min-height: 380px;
+
+    @media (max-width: 992px) {
+      min-height: 300px;
+    }
+  }
+}
+
+.report-page {
+  padding: 0 0 120px;
+
+  @media (max-width: 992px) {
+    padding: 0 0 80px;
   }
 
   &__top {
