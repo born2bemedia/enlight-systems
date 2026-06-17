@@ -55,21 +55,35 @@ function ReportView({ jobId }) {
       const pdf = new jsPDF("p", "mm", "a4");
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = pageWidth;
+
+      const margin = 10; // mm of padding around the content on every page
+      const imgWidth = pageWidth - margin * 2;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const usableHeight = pageHeight - margin * 2;
+      const pageCount = Math.max(1, Math.ceil(imgHeight / usableHeight));
       const imgData = canvas.toDataURL("image/jpeg", 0.92);
 
-      let heightLeft = imgHeight;
-      let position = 0;
+      for (let page = 0; page < pageCount; page += 1) {
+        if (page > 0) pdf.addPage();
 
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+        // Dark page background (matches the report theme) — fills the gutters.
+        pdf.setFillColor(15, 15, 15);
+        pdf.rect(0, 0, pageWidth, pageHeight, "F");
 
-      while (heightLeft > 0) {
-        position -= pageHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+        // Slice the tall image by shifting it up one usable page per page.
+        pdf.addImage(
+          imgData,
+          "JPEG",
+          margin,
+          margin - page * usableHeight,
+          imgWidth,
+          imgHeight
+        );
+
+        // Mask the top/bottom gutters so the padding stays clean at page breaks.
+        pdf.setFillColor(15, 15, 15);
+        pdf.rect(0, 0, pageWidth, margin, "F");
+        pdf.rect(0, pageHeight - margin, pageWidth, margin, "F");
       }
 
       const safeName = (report?.domain || report?.url || "landing-page")
