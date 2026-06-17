@@ -5,8 +5,8 @@ hero_width: 1009
 hero_height: 807
 seo_title: "Trust & Reputation in Crypto Marketing | Enlight"
 seo_description: "Learn why trust blocks crypto conversions, which behavioural metrics reveal reputation gaps, and how Enlight helps measure trust across your funnel."
-date: "10 April 2026"
-published_at: "2026-04-09"
+date: "30 May 2026"
+published_at: "2026-05-30"
 new: true
 list_image: "article-new-trust.png"
 views: "[views]"
