@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { useSiteReportPolling } from "@/src/hooks/useSiteReportPolling";
 import ReportLoader from "@/src/component/ReportLoader";
-import ReportHero from "@/src/component/ReportHero";
 import ReportScreenshot from "@/src/component/ReportScreenshot";
 import ReportCta from "@/src/component/ReportCta";
 
@@ -103,7 +102,6 @@ function ReportView({ jobId }) {
 
   return (
     <>
-      <ReportHero domain={report?.domain || report?.url} />
       <section className="report-page">
         <div className="_container">
           <div className="report-page__top">
@@ -145,7 +143,7 @@ function ReportView({ jobId }) {
             <div className="report-page__doc" ref={docRef}>
             <div className="report-page__head">
               <div>
-                <span className="report-page__label">Landing page report</span>
+                <span className="report-page__label">Website Check Report</span>
                 <h1>{report.domain || report.url}</h1>
                 {report.summary && (
                   <p className="report-page__summary">{report.summary}</p>

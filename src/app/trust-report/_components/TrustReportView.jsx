@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useTrustCheck } from "@/src/hooks/useTrustCheck";
 import ReportLoader from "@/src/component/ReportLoader";
-import ReportHero from "@/src/component/ReportHero";
 import ReportCta from "@/src/component/ReportCta";
 
 const RISK_LABELS = {
@@ -39,7 +38,6 @@ function TrustReportView({ domain }) {
 
   return (
     <>
-      <ReportHero title="Domain Trust Report" domain={domain} />
       <section className="report-page">
         <div className="_container">
           <div className="report-page__top">
