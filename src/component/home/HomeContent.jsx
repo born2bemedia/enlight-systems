@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import DomainCheckForm from "./DomainCheckForm";
-import { DomainCheckingModal } from "@/src/component/DomainCheckModals";
-import { LandingAuditModal } from "@/src/component/LandingAuditModal";
-import { useLandingAuditFlow } from "@/src/hooks/useLandingAuditFlow";
+import { createSiteReport } from "@/src/lib/analysisApi";
+import { formatPageUrl } from "@/src/lib/webAnatomy";
 
 const COLUMNS = [
   {
@@ -37,21 +38,32 @@ const COLUMNS = [
 ];
 
 function HomeContent() {
-  const {
-    checkedUrl,
-    checkingOpen,
-    reportOpen,
-    reportUrl,
-    handleLandingAudit,
-    handleCheckingClose,
-    closeReport,
-  } = useLandingAuditFlow({
-    source: "Home — Content",
-    toolType: "landing-page-audit",
-  });
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSiteReport = async (input) => {
+    const url = formatPageUrl(input);
+
+    if (!url) {
+      setError("Enter a valid URL, e.g. https://example.com");
+      return;
+    }
+
+    setError(null);
+    setSubmitting(true);
+
+    try {
+      const created = await createSiteReport(url);
+      router.push(`/report/${created.job_id}`);
+    } catch (err) {
+      console.error("Site report request failed:", err);
+      setError(err?.message || "Could not start the analysis.");
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <>
     <section className="home-content">
       <div className="_container">
         <h2>Content means more than you think</h2>
@@ -61,9 +73,7 @@ function HomeContent() {
             <div key={column.title} className="home-content__column">
               <div className="home-content__card-head">
                 <h3>{column.title}</h3>
-                <p className="home-content__score">
-                  {column.score} NEEDS WORK
-                </p>
+                <p className="home-content__score">{column.score} NEEDS WORK</p>
               </div>
               <ul className="home-content__list">
                 {column.items.map((item) => (
@@ -91,24 +101,29 @@ function HomeContent() {
           <DomainCheckForm
             id="domain-check-content"
             placeholder="https://..."
-            onSubmit={handleLandingAudit}
+            onSubmit={handleSiteReport}
           />
         </div>
+
+        {submitting && (
+          <p className="home-content__status" role="status">
+            Submitting your page for analysis…
+          </p>
+        )}
+
+        {error && (
+          <div
+            className="home-content__status home-content__status--error"
+            role="alert"
+          >
+            <p>{error}</p>
+            <p className="home-content__status-hint">
+              Check the URL and try again.
+            </p>
+          </div>
+        )}
       </div>
     </section>
-
-      <DomainCheckingModal
-        open={checkingOpen}
-        loading={checkingOpen}
-        onClose={handleCheckingClose}
-      />
-      <LandingAuditModal
-        open={reportOpen}
-        url={checkedUrl}
-        reportUrl={reportUrl}
-        onClose={closeReport}
-      />
-    </>
   );
 }
 
