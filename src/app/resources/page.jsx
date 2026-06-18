@@ -8,7 +8,8 @@ import ResourcesStats from "./_components/ResourcesStats";
 import ResourcesIntro from "./_components/ResourcesIntro";
 import ResourcesLoop from "./_components/ResourcesLoop";
 import ResourcesAssistance from "./_components/ResourcesAssistance";
-import { getNewArticles } from "@/src/utils/blogUtils";
+import { getNewArticles, getPopularArticles } from "@/src/utils/blogUtils";
+import { RESOURCES_FEATURED } from "./resourcesData";
 
 export const metadata = {
   title: "Crypto Marketing Resources",
@@ -22,13 +23,20 @@ export const metadata = {
 
 async function ResourcesPage() {
   const newArticles = await getNewArticles();
+  const popularArticles = await getPopularArticles([
+    ...newArticles.map((article) => article.slug),
+    RESOURCES_FEATURED.slug,
+  ]);
 
   return (
     <>
       <ResourcesHero />
       <ResourcesStats />
       <ResourcesIntro />
-      <ResourcesLoop newArticles={newArticles} />
+      <ResourcesLoop
+        newArticles={newArticles}
+        popularArticles={popularArticles}
+      />
       <ResourcesAssistance />
     </>
   );

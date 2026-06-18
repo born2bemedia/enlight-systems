@@ -67,3 +67,14 @@ export async function getNewArticles(limit = 2) {
     .slice(0, limit)
     .map(({ title, image, slug }) => ({ title, image, slug }));
 }
+
+export async function getPopularArticles(excludeSlugs = []) {
+  const excluded = new Set(excludeSlugs);
+  const slugs = await getSlugs();
+  const posts = await Promise.all(slugs.map((slug) => getPostMeta(slug)));
+
+  return posts
+    .filter((post) => !excluded.has(post.slug))
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .map(({ title, image, slug }) => ({ title, image, slug }));
+}

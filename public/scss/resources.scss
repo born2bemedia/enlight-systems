@@ -1143,6 +1143,113 @@
     }
   }
 
+  .resources-popular-section {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .resources-popular-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      align-self: stretch;
+
+      .bottom {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .resources-popular-expand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: -20px 0 0;
+    position: relative;
+    z-index: 2;
+    transition: margin 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.is-expanded {
+      margin: 24px 0 0;
+    }
+
+    &__btn {
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      background: var(--4, #97d80f);
+      color: var(--2, #0f0f0f);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+      animation: resources-popular-bounce 2s ease-in-out infinite;
+
+      svg {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      &.is-expanded {
+        animation: none;
+
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      &:hover {
+        animation: none;
+        transform: scale(1.06);
+      }
+    }
+  }
+
+  .resources-popular-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
+    transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &__inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    &__grid {
+      padding-top: 32px;
+      opacity: 0;
+      transform: translateY(-16px);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.is-open {
+      grid-template-rows: 1fr;
+
+      .resources-popular-more__grid {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.08s;
+      }
+    }
+
+    &:not(.is-open) .resources-popular-more__grid {
+      transition-delay: 0s;
+    }
+  }
+
   .resource-first {
     position: relative;
     min-height: 540px;
@@ -1418,5 +1525,16 @@
             line-height: 140%; /* 22.4px */
         }
     }
+  }
+}
+
+@keyframes resources-popular-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
   }
 }

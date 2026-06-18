@@ -13,12 +13,12 @@ import ResourcesSubscribe from "./ResourcesSubscribe";
 import { useDomainCheckFlow } from "@/src/hooks/useDomainCheckFlow";
 import { useLandingAuditFlow } from "@/src/hooks/useLandingAuditFlow";
 import { LandingAuditModal } from "@/src/component/LandingAuditModal";
+import ResourcesPopularSection from "./ResourcesPopularSection";
 import {
   RESOURCES_COMING_SOON,
   RESOURCES_FEATURED,
   RESOURCES_MUST_READ,
   RESOURCES_NEW,
-  RESOURCES_POPULAR,
   RESOURCES_TOOLS,
 } from "../resourcesData";
 
@@ -38,7 +38,10 @@ const ReadMoreIcon = () => (
   </svg>
 );
 
-function ResourcesLoop({ newArticles = RESOURCES_NEW }) {
+function ResourcesLoop({
+  newArticles = RESOURCES_NEW,
+  popularArticles = [],
+}) {
   const spamCheck = useDomainCheckFlow({
     source: "Resources",
     toolType: "domain-spam-scam-check",
@@ -92,14 +95,7 @@ function ResourcesLoop({ newArticles = RESOURCES_NEW }) {
             />
 
             <h3>Most popular</h3>
-            {RESOURCES_POPULAR.map((item) => (
-              <ResourceCard
-                key={item.slug}
-                title={item.title}
-                image={item.image}
-                slug={item.slug}
-              />
-            ))}
+            <ResourcesPopularSection articles={popularArticles} />
 
             <ResourcesToolPanel
               title={RESOURCES_TOOLS[1].title}

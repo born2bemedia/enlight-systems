@@ -36,24 +36,6 @@ export const RESOURCES_FEATURED = {
   slug: "10-reasons-for-low-roi-in-crypto-marketing-common-pitfalls-to-avoid",
 };
 
-export const RESOURCES_POPULAR = [
-  {
-    title: "Crypto Marketing Metrics: Key Performance Indicators for Success",
-    image: "article2-loop.png",
-    slug: "crypto-marketing-metrics-key-performance-indicators-for-success",
-  },
-  {
-    title: "Navigating Compliance in Crypto Marketing: A Practical Guide",
-    image: "article3-loop.png",
-    slug: "navigating-compliance-in-crypto-marketing-a-practical-guide",
-  },
-  {
-    title: "Crypto Product Differentiation: How to Stand Out from the Crowd",
-    image: "article4-loop.png",
-    slug: "crypto-product-differentiation-how-to-stand-out-from-the-crowd",
-  },
-];
-
 export const RESOURCES_NEW = [
   {
     title: "Marketing Automation for Crypto Projects",
