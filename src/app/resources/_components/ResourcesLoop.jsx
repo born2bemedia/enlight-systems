@@ -15,7 +15,6 @@ import { useLandingAuditFlow } from "@/src/hooks/useLandingAuditFlow";
 import { LandingAuditModal } from "@/src/component/LandingAuditModal";
 import ResourcesPopularSection from "./ResourcesPopularSection";
 import {
-  RESOURCES_COMING_SOON,
   RESOURCES_FEATURED,
   RESOURCES_MUST_READ,
   RESOURCES_NEW,
@@ -39,7 +38,8 @@ const ReadMoreIcon = () => (
 );
 
 function ResourcesLoop({
-  newArticles = RESOURCES_NEW,
+  newSectionArticles = RESOURCES_NEW,
+  newArticlesVisibleCount = 2,
   popularArticles = [],
 }) {
   const spamCheck = useDomainCheckFlow({
@@ -105,26 +105,11 @@ function ResourcesLoop({
             />
 
             <h3>New articles</h3>
-            {newArticles.map((item) => (
-              <ResourceCard
-                key={item.slug}
-                className="half cover"
-                title={item.title}
-                image={item.image}
-                slug={item.slug}
-              />
-            ))}
-
-            <h3>Coming soon</h3>
-            {RESOURCES_COMING_SOON.map((item) => (
-              <ResourceCard
-                key={item.title}
-                className="half cover"
-                title={item.title}
-                image={item.image}
-                comingSoon
-              />
-            ))}
+            <ResourcesPopularSection
+              articles={newSectionArticles}
+              visibleCount={newArticlesVisibleCount}
+              cardClassName="half cover"
+            />
           </RevealList>
         </div>
       </section>

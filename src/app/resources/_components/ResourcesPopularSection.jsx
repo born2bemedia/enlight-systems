@@ -18,14 +18,18 @@ const ExpandIcon = () => (
   </svg>
 );
 
-function ResourcesPopularSection({ articles = [] }) {
+function ResourcesPopularSection({
+  articles = [],
+  visibleCount = VISIBLE_COUNT,
+  cardClassName = "",
+}) {
   const [expanded, setExpanded] = useState(false);
-  const primaryArticles = articles.slice(0, VISIBLE_COUNT);
-  const hiddenArticles = articles.slice(VISIBLE_COUNT);
+  const primaryArticles = articles.slice(0, visibleCount);
+  const hiddenArticles = articles.slice(visibleCount);
   const hasMore = hiddenArticles.length > 0;
 
   if (!articles.length) {
-    return null;
+    return <div className="resources-popular-section" />;
   }
 
   return (
@@ -34,6 +38,7 @@ function ResourcesPopularSection({ articles = [] }) {
         {primaryArticles.map((item) => (
           <ResourceCard
             key={item.slug}
+            className={cardClassName}
             title={item.title}
             image={item.image}
             slug={item.slug}
@@ -53,6 +58,7 @@ function ResourcesPopularSection({ articles = [] }) {
                 {hiddenArticles.map((item) => (
                   <ResourceCard
                     key={item.slug}
+                    className={cardClassName}
                     title={item.title}
                     image={item.image}
                     slug={item.slug}

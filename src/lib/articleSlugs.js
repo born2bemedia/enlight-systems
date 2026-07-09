@@ -7,6 +7,7 @@ export const ARTICLE_SLUGS = [
   "crypto-product-differentiation-how-to-stand-out-from-the-crowd",
   "navigating-compliance-in-crypto-marketing-a-practical-guide",
   "trust-reputation-in-crypto-marketing",
+  "cross-channel-attribution-marketing-visibility-in-crypto",
 ];
 
 export function isArticleSlug(slug) {
