@@ -16,6 +16,7 @@ export async function getPost(slug) {
       seo_description,
       date = "",
       views = "",
+      subtitle = "",
       toc = [],
       hero_width = 700,
       hero_height = 538,
@@ -32,6 +33,7 @@ export async function getPost(slug) {
     seo_description,
     date,
     views,
+    subtitle,
     toc,
     body,
   };

@@ -8,6 +8,7 @@ export const ARTICLE_SLUGS = [
   "navigating-compliance-in-crypto-marketing-a-practical-guide",
   "trust-reputation-in-crypto-marketing",
   "cross-channel-attribution-marketing-visibility-in-crypto",
+  "community-led-growth-in-crypto",
 ];
 
 export function isArticleSlug(slug) {

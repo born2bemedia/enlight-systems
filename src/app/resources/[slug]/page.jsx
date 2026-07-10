@@ -42,6 +42,9 @@ async function SingleArticle({ params: { slug } }) {
             <div className="single-post-top__inner">
               <div className="single-post-top__text">
                 <h1>{post.title}</h1>
+                {post.subtitle ? (
+                  <p className="single-post-top__subtitle">{post.subtitle}</p>
+                ) : null}
                 <div className="single-post-top__meta">
                   {post.date && (
                     <div className="single-post-top__meta-row">
