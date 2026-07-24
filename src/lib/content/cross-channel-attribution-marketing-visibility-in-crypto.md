@@ -1,18 +1,17 @@
 ---
 title: "Cross-Channel Attribution & Marketing Visibility in Crypto"
+subtitle: "Why Crypto Teams Don't Know What Actually Drives Conversions"
 image: "article-hero-attribution.png"
-hero_width: 854
-hero_height: 504
+hero_width: 882
+hero_height: 538
 seo_title: "Cross-Channel Attribution & Marketing Visibility in Crypto | Enlight"
 seo_description: "Learn why crypto teams lack conversion visibility, where attribution breaks across the funnel, and how to build unified cross-channel marketing measurement."
-date: "9 July 2026"
-published_at: "2026-07-09"
+date: "20 July 2026"
+published_at: "2026-07-20"
 new: true
-list_image: "article-soon-attribution.png"
+list_image: "article-new-attribution.png"
 views: "[views]"
 toc:
-  - id: why-not-convert
-    label: "Why Crypto Teams Don't Know What Actually Drives Conversions"
   - id: attribution-breaks
     label: "Why attribution breaks in crypto marketing"
   - id: diagnostic-checklist
@@ -32,8 +31,6 @@ toc:
   - id: conclusion
     label: "Conclusion"
 ---
-
-<h2 id="why-not-convert">Why Crypto Teams Don't Know What Actually Drives Conversions</h2>
 
 Crypto marketing today runs on multiple disconnected systems. Traffic comes from paid ads, influencers, exchanges, affiliates, communities, and organic search. Each channel reports its own performance, but very few teams have a unified understanding of how these channels actually contribute to conversions.
 
@@ -68,8 +65,8 @@ Tick the statements that apply to your current setup:
     <span>Statement</span>
     <span>What it means</span>
   </div>
-  <label class="post-checklist__item is-checked">
-    <input type="checkbox" checked />
+  <label class="post-checklist__item">
+    <input type="checkbox" />
     <span class="post-checklist__title">You rely only on last-click attribution</span>
     <span class="post-checklist__desc">You are missing full user journey context</span>
   </label>
@@ -91,7 +88,7 @@ Tick the statements that apply to your current setup:
   <label class="post-checklist__item">
     <input type="checkbox" />
     <span class="post-checklist__title">Influencer campaigns are measured only via clicks</span>
-    <span class="post-checklist__desc">Assisted conversions are ignored</span>
+    <span class="post-checklist__desc">Influencer campaigns are measured only via clicks</span>
   </label>
   <label class="post-checklist__item">
     <input type="checkbox" />
@@ -106,7 +103,7 @@ Tick the statements that apply to your current setup:
   <label class="post-checklist__item">
     <input type="checkbox" />
     <span class="post-checklist__title">Budget decisions are based on platform dashboards</span>
-    <span class="post-checklist__desc">No single source of truth exists</span>
+    <span class="post-checklist__desc">Budget decisions are based on platform dashboards</span>
   </label>
 </div>
 

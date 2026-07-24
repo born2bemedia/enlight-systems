@@ -38,14 +38,14 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "Cross-Channel Attribution & Marketing Visibility in Crypto",
+    image: "article-new-attribution.png",
+    slug: "cross-channel-attribution-marketing-visibility-in-crypto",
+  },
+  {
     title: "Community-Led Growth in Crypto",
     image: "article-new-community.png",
     slug: "community-led-growth-in-crypto",
-  },
-  {
-    title: "Cross-Channel Attribution & Marketing Visibility in Crypto",
-    image: "article-soon-attribution.png",
-    slug: "cross-channel-attribution-marketing-visibility-in-crypto",
   },
   {
     title: "Marketing Automation for Crypto Projects",
