@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "CAC vs LTV in Crypto Projects",
+    image: "article-new-cac-ltv.png",
+    slug: "cac-vs-ltv-in-crypto-projects",
+  },
+  {
     title: "Cross-Channel Attribution & Marketing Visibility in Crypto",
     image: "article-new-attribution.png",
     slug: "cross-channel-attribution-marketing-visibility-in-crypto",
