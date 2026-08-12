@@ -87,6 +87,38 @@ function PrivacyPage() {
                 </li>
               </ol>
               <h2>
+                <strong>Cookies Used for Interactive Tools</strong>
+              </h2>
+              <p>
+                Some features of our website, including calculators, assessment
+                tools, website analysis features and interactive forms, use
+                cookies or similar technologies to:
+              </p>
+              <ul>
+                <li>
+                  Maintain your session while using interactive tools.
+                </li>
+                <li>
+                  Remember information entered during a single session.
+                </li>
+                <li>
+                  Improve the performance and reliability of our assessment
+                  tools.
+                </li>
+                <li>
+                  Measure how users interact with calculators and other
+                  interactive features.
+                </li>
+                <li>
+                  Detect technical issues and prevent misuse of our services.
+                </li>
+              </ul>
+              <p>
+                These cookies do not store the results of your assessments for
+                advertising purposes and are used only to support the
+                functionality and improvement of our services.
+              </p>
+              <h2>
                 <strong>How to control cookies</strong>
               </h2>
               <p>
