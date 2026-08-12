@@ -140,6 +140,71 @@ function PrivacyPage() {
                 </li>
               </ol>
               <h2>
+                <strong>Interactive Tools and Website Analysis</strong>
+              </h2>
+              <p>
+                Enlight Systems provides interactive calculators, website
+                assessment tools, reputation checks, content analysis tools and
+                other automated features designed to help users evaluate various
+                aspects of their marketing activities.
+              </p>
+              <p>
+                When you use these tools, we may collect and process information
+                you voluntarily provide, including:
+              </p>
+              <ul>
+                <li>Website or domain names.</li>
+                <li>
+                  Marketing and business metrics entered into calculators.
+                </li>
+                <li>Responses to assessment questions.</li>
+                <li>Information submitted through interactive forms.</li>
+                <li>Generated assessment scores and reports.</li>
+                <li>Technical information required to operate the tools.</li>
+              </ul>
+              <p>
+                Where applicable, our tools may analyse publicly accessible
+                information related to the website or domain you submit. Such
+                analysis is performed solely to generate the requested
+                assessment and improve the quality of our services.
+              </p>
+              <p>
+                Assessment results are generated automatically based on
+                predefined evaluation criteria and the information provided by
+                you. They are intended for informational purposes only and do
+                not constitute professional marketing, legal or financial
+                advice.
+              </p>
+              <p>
+                We use the information collected through these tools to:
+              </p>
+              <ul>
+                <li>
+                  Generate personalised reports and recommendations.
+                </li>
+                <li>
+                  Improve the accuracy and functionality of our interactive
+                  tools.
+                </li>
+                <li>
+                  Analyse aggregated and anonymised usage trends.
+                </li>
+                <li>
+                  Respond to enquiries or consultation requests submitted by
+                  users.
+                </li>
+                <li>
+                  Detect misuse, abuse or fraudulent activity involving our
+                  services.
+                </li>
+              </ul>
+              <p>
+                Assessment data is treated as confidential and is not sold to
+                third parties. Aggregated and anonymised statistical information
+                may be used to improve our services, conduct internal research
+                or evaluate product performance.
+              </p>
+              <h2>
                 <strong>Purposes for using information</strong>
               </h2>
               <p>
