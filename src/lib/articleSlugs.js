@@ -10,6 +10,7 @@ export const ARTICLE_SLUGS = [
   "cross-channel-attribution-marketing-visibility-in-crypto",
   "community-led-growth-in-crypto",
   "cac-vs-ltv-in-crypto-projects",
+  "measuring-marketing-roi-across-multiple-channels",
 ];
 
 export function isArticleSlug(slug) {

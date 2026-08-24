@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "Measuring Marketing ROI Across Multiple Channels",
+    image: "article-new-roi.png",
+    slug: "measuring-marketing-roi-across-multiple-channels",
+  },
+  {
     title: "CAC vs LTV in Crypto Projects",
     image: "article-new-cac-ltv.png",
     slug: "cac-vs-ltv-in-crypto-projects",
