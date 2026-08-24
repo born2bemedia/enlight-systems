@@ -11,6 +11,7 @@ export const ARTICLE_SLUGS = [
   "community-led-growth-in-crypto",
   "cac-vs-ltv-in-crypto-projects",
   "measuring-marketing-roi-across-multiple-channels",
+  "the-hidden-cost-of-marketing-data-silos",
 ];
 
 export function isArticleSlug(slug) {

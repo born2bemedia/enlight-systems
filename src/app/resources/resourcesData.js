@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "The Hidden Cost of Marketing Data Silos",
+    image: "article-new-data-silos.png",
+    slug: "the-hidden-cost-of-marketing-data-silos",
+  },
+  {
     title: "Measuring Marketing ROI Across Multiple Channels",
     image: "article-new-roi.png",
     slug: "measuring-marketing-roi-across-multiple-channels",
