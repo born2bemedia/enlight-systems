@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "The Coinbase Super Bowl QR Code",
+    image: "article-new-coinbase-qr.png",
+    slug: "the-coinbase-super-bowl-qr-code",
+  },
+  {
     title: "Why CTR Can Mislead Crypto Marketers",
     image: "article-new-ctr.png",
     slug: "why-ctr-can-mislead-crypto-marketers",

@@ -74,7 +74,11 @@ async function SingleArticle({ params: { slug } }) {
                 alt=""
                 priority
                 className={`single-post-top__art-img${
-                  post.heroLg ? " single-post-top__art-img--lg" : ""
+                  post.heroXl
+                    ? " single-post-top__art-img--xl"
+                    : post.heroLg
+                      ? " single-post-top__art-img--lg"
+                      : ""
                 }`}
               />
             </div>

@@ -196,6 +196,11 @@
       transform: scale(1.42);
     }
 
+    &--xl {
+      max-width: min(85vw, 1340px);
+      transform: scale(1.85);
+    }
+
     @media (max-width: 992px) {
       margin: 0 auto;
       max-width: 100%;
@@ -207,6 +212,11 @@
       &--lg {
         max-height: 400px;
         transform: scale(1.34);
+      }
+
+      &--xl {
+        max-height: 480px;
+        transform: scale(1.74);
       }
     }
   }

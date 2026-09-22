@@ -13,6 +13,7 @@ export const ARTICLE_SLUGS = [
   "measuring-marketing-roi-across-multiple-channels",
   "the-hidden-cost-of-marketing-data-silos",
   "why-ctr-can-mislead-crypto-marketers",
+  "the-coinbase-super-bowl-qr-code",
 ];
 
 export function isArticleSlug(slug) {

@@ -21,6 +21,7 @@ export async function getPost(slug) {
       hero_width = 700,
       hero_height = 538,
       hero_lg = false,
+      hero_xl = false,
     },
   } = matter(text);
   const body = marked(content);
@@ -31,6 +32,7 @@ export async function getPost(slug) {
     heroWidth: hero_width,
     heroHeight: hero_height,
     heroLg: Boolean(hero_lg),
+    heroXl: Boolean(hero_xl),
     seo_title,
     seo_description,
     date,
