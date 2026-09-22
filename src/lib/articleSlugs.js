@@ -12,6 +12,7 @@ export const ARTICLE_SLUGS = [
   "cac-vs-ltv-in-crypto-projects",
   "measuring-marketing-roi-across-multiple-channels",
   "the-hidden-cost-of-marketing-data-silos",
+  "why-ctr-can-mislead-crypto-marketers",
 ];
 
 export function isArticleSlug(slug) {

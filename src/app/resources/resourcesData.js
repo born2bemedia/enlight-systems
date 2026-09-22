@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "Why CTR Can Mislead Crypto Marketers",
+    image: "article-new-ctr.png",
+    slug: "why-ctr-can-mislead-crypto-marketers",
+  },
+  {
     title: "The Hidden Cost of Marketing Data Silos",
     image: "article-new-data-silos.png",
     slug: "the-hidden-cost-of-marketing-data-silos",
