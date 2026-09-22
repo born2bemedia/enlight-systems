@@ -7,8 +7,8 @@ hero_height: 538
 hero_xl: true
 seo_title: "The Coinbase Super Bowl QR Code: How a 60-Second Ad Became a Crypto Marketing Case Study | Enlight"
 seo_description: "How Coinbase’s Super Bowl QR code ad drove 20M+ landing-page hits and 445,000 registrations — and what crypto marketers can learn about funnels, ops, and measurement."
-date: "15 August 2026"
-published_at: "2026-08-15"
+date: "23 September 2026"
+published_at: "2026-09-23"
 new: true
 list_image: "article-new-coinbase-qr.png"
 views: "[views]"
