@@ -3,7 +3,6 @@ title: "Crypto Traffic: How to Attract the Right Audience and Measure Acquisitio
 image: "article-hero-crypto-traffic.png"
 hero_width: 853
 hero_height: 538
-hero_xl: true
 seo_title: "Crypto Traffic: How to Attract the Right Audience and Measure Acquisition | Enlight"
 seo_description: "How much traffic a crypto project really needs, how organic and paid acquisition compare, which compliance checks apply, and how to measure traffic quality and acquisition cost."
 date: "21 October 2026"
