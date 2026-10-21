@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "Crypto Traffic: How to Attract the Right Audience and Measure Acquisition",
+    image: "article-new-crypto-traffic.png",
+    slug: "crypto-traffic-how-to-attract-the-right-audience-and-measure-acquisition",
+  },
+  {
     title: "The Coinbase Super Bowl QR Code",
     image: "article-new-coinbase-qr.png",
     slug: "the-coinbase-super-bowl-qr-code",

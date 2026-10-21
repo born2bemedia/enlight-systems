@@ -14,6 +14,7 @@ export const ARTICLE_SLUGS = [
   "the-hidden-cost-of-marketing-data-silos",
   "why-ctr-can-mislead-crypto-marketers",
   "the-coinbase-super-bowl-qr-code",
+  "crypto-traffic-how-to-attract-the-right-audience-and-measure-acquisition",
 ];
 
 export function isArticleSlug(slug) {
