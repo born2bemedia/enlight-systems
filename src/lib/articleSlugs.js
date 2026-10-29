@@ -15,6 +15,7 @@ export const ARTICLE_SLUGS = [
   "why-ctr-can-mislead-crypto-marketers",
   "the-coinbase-super-bowl-qr-code",
   "crypto-traffic-how-to-attract-the-right-audience-and-measure-acquisition",
+  "attribution-in-crypto-marketing-how-to-identify-which-channels-bring-results",
 ];
 
 export function isArticleSlug(slug) {

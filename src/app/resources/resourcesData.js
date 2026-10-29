@@ -38,6 +38,11 @@ export const RESOURCES_FEATURED = {
 
 export const RESOURCES_NEW = [
   {
+    title: "Attribution in Crypto Marketing: How to Identify Which Channels Bring Results",
+    image: "article-new-attribution-channels.png",
+    slug: "attribution-in-crypto-marketing-how-to-identify-which-channels-bring-results",
+  },
+  {
     title: "Crypto Traffic: How to Attract the Right Audience and Measure Acquisition",
     image: "article-new-crypto-traffic.png",
     slug: "crypto-traffic-how-to-attract-the-right-audience-and-measure-acquisition",
